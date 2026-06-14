@@ -1,0 +1,163 @@
+{
+  "week_start": "2026-06-06",
+  "week_end": "2026-06-13",
+  "generated_at_utc": "2026-06-13T21:40:37.367646+00:00",
+  "categories": [
+    "cs.AI",
+    "cs.CV",
+    "cs.LG",
+    "eess.AS",
+    "cs.HC",
+    "eess.SP"
+  ],
+  "total_papers": 54,
+  "subdomain_counts": {
+    "Foundation Models & LLMs": 6,
+    "Multimodal & Vision-Language": 2,
+    "Robotics & Embodied AI": 3,
+    "Agents & Reasoning": 7,
+    "Other": 7,
+    "Alignment, Safety & Ethics": 4,
+    "Computer Vision": 6,
+    "Scientific Applications": 5,
+    "Audio, Speech & Music": 7,
+    "Human-Computer Interaction": 4,
+    "Efficiency, Compression & Inference": 3
+  },
+  "column_markdown": "# This week in AI research\n\n## The week at a glance\nThis week’s research landscape signals a quiet but significant shift in how we conceptualize the boundaries of AI systems. We are moving past the era of treating models as isolated \"brains\" that simply need larger context windows or more compute. Instead, the dominant energy is focused on spatial, physical, and environmental grounding.\n\nIn computer vision and multimodal research, we see a clear trend toward \"seeing through\" flat representations. Papers like *World Tracing* and *Modality Forcing* demonstrate that generative models are moving beyond 2D pixel grids to natively predict occluded geometry and depth. This suggests that spatial awareness is not a separate module to be bolted on, but an emergent property of well-designed generative objectives.\n\nSimultaneously, the agent space is undergoing a pragmatic realization: optimizing the internal reasoning loops of LLMs has hit a point of diminishing returns. The bottleneck is no longer just \"how the agent thinks,\" but \"where the agent acts.\" This is",
+  "top_papers": [
+    {
+      "arxiv_id": "2606.13680",
+      "title": "Learning to Reason by Analogy via Retrieval-Augmented Reinforcement Fine-Tuning",
+      "url": "https://arxiv.org/abs/2606.13680v1",
+      "score": 0,
+      "subdomain": "Foundation Models & LLMs",
+      "authors": "Zilin Xiao, Qi Ma, Chun-cheng Jason Chen et al.",
+      "published": "2026-06-11",
+      "lay_summary": "This paper introduces Retrieval-Augmented Reinforcement Fine-Tuning (RA-RFT), a new method to teach language models to reason by analogy. While standard retrieval-augmented generation (RAG) helps LLMs by providing external knowledge, its reliance on semantic similarity often fails for complex reasoning tasks where similar-looking problems might need different solutions, or vice-versa. RA-RFT addresses this by training a retriever to identify contexts that offer the most useful reasoning strategies, rather than just semantically similar information. This is achieved through \"gold-relevance distillation,\" which teaches the retriever to rank contexts based on their \"expected reasoning benefit.\" Subsequently, the language model is fine-tuned using reinforcement learning with these retrieved, analogous demonstrations, learning to leverage verifiable reasoning traces. The authors demonstrate that this \"reasoning-aware retrieval\" significantly improves performance on challenging mathematical reasoning benchmarks, outperforming traditional reinforcement fine-tuning methods. Practitioners should care because this offers a concrete path to building more robust and accurate AI systems for complex problem-solving, moving beyond simple information retrieval to genuine analogical reasoning.",
+      "what_is_new": "The core novelty is RA-RFT, which trains a retriever using \"gold-relevance distillation\" to rank contexts by \"expected reasoning benefit\" rather than semantic similarity. This reasoning-aware retrieval is then combined with reinforcement fine-tuning, teaching LLMs to leverage analogous problem-solving demonstrations."
+    },
+    {
+      "arxiv_id": "2606.13679",
+      "title": "InterleaveThinker: Reinforcing Agentic Interleaved Generation",
+      "url": "https://arxiv.org/abs/2606.13679v1",
+      "score": 0,
+      "subdomain": "Multimodal & Vision-Language",
+      "authors": "Dian Zheng, Harry Lee, Manyuan Zhang et al.",
+      "published": "2026-06-11",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.13677",
+      "title": "Mana: Dexterous Manipulation of Articulated Tools",
+      "url": "https://arxiv.org/abs/2606.13677v1",
+      "score": 0,
+      "subdomain": "Robotics & Embodied AI",
+      "authors": "Zhao-Heng Yin, Guanya Shi, Pieter Abbeel et al.",
+      "published": "2026-06-11",
+      "lay_summary": "Manipulating articulated tools, like scissors or pliers, is incredibly difficult for robots because it requires coordinating many internal moving parts and managing complex physical interactions. Current robotic systems mostly handle rigid objects, leaving articulated tool use largely unexplored due to its physical complexity and the challenge of teaching robots how to grasp and use them effectively. This paper introduces Mana (Manipulation Animator), a novel framework that reframes dexterous manipulation as an animation problem. Mana uses a coarse-to-fine approach, starting with procedurally generated grasp keyframes and refining them into full manipulation trajectories using motion planning and reinforcement learning. The data generation process is largely automated, requiring minimal human input. Mana successfully demonstrates zero-shot sim-to-real transfer for both grasping and in-hand manipulation across four different articulated tools, offering a scalable solution for robots to master complex tool use. Practitioners should note this as a significant step towards more versatile and autonomous robotic systems.",
+      "what_is_new": "Mana reinterprets dexterous manipulation of articulated tools as an animation problem. It introduces a coarse-to-fine pipeline that transforms procedurally generated grasp keyframes into full manipulation trajectories. This framework enables largely automatic data generation and zero-shot sim-to-real transfer for complex articulated tool use."
+    },
+    {
+      "arxiv_id": "2606.13676",
+      "title": "Modality Forcing for Scalable Spatial Generation",
+      "url": "https://arxiv.org/abs/2606.13676v1",
+      "score": 0,
+      "subdomain": "Multimodal & Vision-Language",
+      "authors": "Bardienus Pieter Duisterhof, Deva Ramanan, Jeffrey Ichnowski et al.",
+      "published": "2026-06-11",
+      "lay_summary": "This paper introduces \"Modality Forcing,\" a straightforward and scalable method to enable existing text-to-image (T2I) models to jointly generate images and their corresponding depth maps. Current T2I models inherently understand scene geometry, but adapting them for explicit depth prediction often requires complex training on dense depth data. Modality Forcing simplifies this by using a post-training recipe that works with sparse, real-world depth data. It assigns separate noise levels to the image and depth modalities and uses per-modality decoders, allowing for flexible conditional generation of either or both.\n\nThe researchers demonstrate that this approach is highly scalable; larger T2I models trained on more image data produce significantly more accurate depth. Their best model achieves depth prediction competitive with state-of-the-art monocular depth estimators, drastically improving upon previous joint image-depth generative models. Practitioners should care because this technique unlocks more precise spatial control over generative AI outputs, making it easier to create photorealistic scenes with accurate geometry for applications like virtual production, game development, or architectural visualization. It shows that image generation is a powerful pre-training objective for spatial perception.",
+      "what_is_new": "Modality Forcing is a simple, scalable post-training recipe for joint image-depth generation using a single DiT model. It uniquely leverages sparse depth data and separate noise levels per modality, enabling flexible conditional generation."
+    },
+    {
+      "arxiv_id": "2606.13674",
+      "title": "RepWAM: World Action Modeling with Representation Visual-Action Tokenizers",
+      "url": "https://arxiv.org/abs/2606.13674v1",
+      "score": 0,
+      "subdomain": "Robotics & Embodied AI",
+      "authors": "Junke Wang, Qihang Zhang, Shuai Yang et al.",
+      "published": "2026-06-11",
+      "lay_summary": "This paper introduces RepWAM, a new approach to building \"world action models\" (WAMs) for robots, which are crucial for enabling robots to understand and interact with their environment. Unlike previous WAMs that often rely on video tokenizers primarily designed for reconstructing visual pixels, RepWAM uses a novel \"representation visual-action tokenizer.\" This tokenizer is specifically trained to map visual inputs into aligned visual and *latent action* tokens, focusing on the semantic meaning of actions rather than just visual fidelity. The core idea is that by understanding the underlying actions and their effects in a semantic latent space, the robot can better follow instructions and predict future states. The RepWAM model is then pretrained to jointly predict future visual states and the latent actions that connect them, all under language instructions, before being adapted for real robot manipulation. Experiments on both real-world tasks and simulations demonstrate that RepWAM significantly improves performance in diverse manipulation settings, highlighting the value of this semantic, representation-centric approach over traditional reconstruction methods. This work represents a significant step towards creating more generalist and instruction-following robot policies.",
+      "what_is_new": "This paper introduces RepWAM, a novel world action model built on a \"representation visual-action tokenizer\" that learns a semantic visual-action latent space. This approach moves beyond reconstruction-oriented tokenizers to better connect future prediction with instruction-following dynamics for robot control, a capability not effectively addressed by prior WAMs."
+    },
+    {
+      "arxiv_id": "2606.13673",
+      "title": "SpatialClaw: Rethinking Action Interface for Agentic Spatial Reasoning",
+      "url": "https://arxiv.org/abs/2606.13673v1",
+      "score": 0,
+      "subdomain": "Agents & Reasoning",
+      "authors": "Seokju Cho, Ryo Hachiuma, Abhishek Badki et al.",
+      "published": "2026-06-11",
+      "lay_summary": "This paper tackles a core challenge for AI agents: spatial reasoning, which involves understanding where objects are, how they relate, and how they move in 3D space. Current approaches often limit an agent's ability to adapt its reasoning process. Some commit to a full analysis strategy before seeing any results, while others use rigid tool interfaces that lack flexibility. The authors propose SpatialClaw, a novel, training-free framework that addresses these limitations. SpatialClaw equips a Vision-Language Model (VLM) agent with a stateful Python kernel, pre-loaded with perception and geometry tools. This allows the agent to write and execute one piece of code at a time, dynamically adapting its analysis based on intermediate text and visual observations. This flexible, step-by-step approach significantly improves spatial reasoning. Practitioners should care because SpatialClaw achieves a substantial +11.2 point accuracy gain over prior methods across 20 diverse 3D/4D spatial reasoning benchmarks, working consistently across various VLM backbones without specific adaptation, making it a powerful tool for building more capable AI agents.",
+      "what_is_new": "The core novelty is SpatialClaw, a training-free framework that enables VLM agents to perform open-ended spatial reasoning using a stateful, step-by-step code execution interface. This allows dynamic adaptation to intermediate observations, unlike prior rigid approaches."
+    },
+    {
+      "arxiv_id": "2606.13671",
+      "title": "Understanding Truncated Positional Encodings for Graph Neural Networks",
+      "url": "https://arxiv.org/abs/2606.13671v1",
+      "score": 0,
+      "subdomain": "Other",
+      "authors": "James Flora, Mitchell Black, Weng-Keen Wong et al.",
+      "published": "2026-06-11",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.13670",
+      "title": "Automated reproducibility assessments in the social and behavioral sciences using large language models",
+      "url": "https://arxiv.org/abs/2606.13670v1",
+      "score": 0,
+      "subdomain": "Agents & Reasoning",
+      "authors": "Tobias Holtdirk, Pietro Marcolongo, Anna Steinberg Schulten et al.",
+      "published": "2026-06-11",
+      "lay_summary": "Reproducibility is a cornerstone of scientific research, especially in the social and behavioral sciences, where independent researchers typically reanalyze original data to confirm findings. This process is incredibly resource-intensive and difficult to scale, limiting the number of studies that can be rigorously checked. This paper introduces a novel approach using large language models (LLMs) to automate these reproducibility assessments. The researchers tested their LLM pipeline on 76 published studies, comparing its ability to recover original effect sizes and qualitative conclusions against both the original findings and human reanalysis. While the LLM couldn't produce an effect size for 7 studies, for the remainder, it recovered original effect sizes within a +/-0.05 Cohen's d tolerance in 41% of cases, outperforming human reanalysts (34%). Crucially, the LLM matched the original study's qualitative conclusion in 96% of cases, significantly better than human reanalysts (74%). This demonstrates LLMs' potential as a scalable, efficient tool for systematic auditing of empirical results, promising to enhance research integrity across these fields.",
+      "what_is_new": "This paper introduces the first systematic approach to automate reproducibility assessments in the social and behavioral sciences using large language models. It quantifies LLM performance against both original study findings and human reanalysis for recovering effect sizes and qualitative conclusions, demonstrating superior or comparable results in key metrics. This specific comparison and demonstration of LLM capability for this complex"
+    },
+    {
+      "arxiv_id": "2606.13669",
+      "title": "Agents-K1: Towards Agent-native Knowledge Orchestration",
+      "url": "https://arxiv.org/abs/2606.13669v1",
+      "score": 0,
+      "subdomain": "Agents & Reasoning",
+      "authors": "Zongsheng Cao, Bihao Zhan, Jinxin Shi et al.",
+      "published": "2026-06-11",
+      "lay_summary": "Current AI agents, especially those powered by large language models, struggle with truly understanding and reasoning over complex scientific literature. They often only process abstracts or superficial mentions, missing critical details like specific claims, evidence, and methodological lineages found within full papers. This paper introduces Agents-K1, an end-to-end pipeline designed to overcome this limitation by converting raw scientific documents into \"agent-native\" knowledge graphs. Agents-K1 features a multimodal parser that extracts detailed entities, evidence, and relationships from entire papers, not just summaries. It uses a specialized 4-billion-parameter information extraction model trained with a rule-based reward system. The output is integrated into a \"graphanything\" command-line interface, allowing agents to unify web search, multimodal graph retrieval, and cross-document traversal for robust scientific reasoning. The authors applied this pipeline to 2.46 million scientific papers, creating Scholar-KG, a massive scientific knowledge graph, with a one-million-paper subset publicly released. This work significantly advances how AI agents can interact with and reason about scientific knowledge, moving beyond superficial understanding to deep, structured comprehension.",
+      "what_is_new": "This paper introduces Agents-K1, a novel end-to-end pipeline for converting full scientific documents into agent-native knowledge graphs. It features a multimodal parser, a custom 4B information extraction backbone, and a unified agent interface. The work also yields Scholar-KG, a massive scientific knowledge graph derived from millions of papers."
+    },
+    {
+      "arxiv_id": "2606.13662",
+      "title": "EurekAgent: Agent Environment Engineering is All You Need For Autonomous Scientific Discovery",
+      "url": "https://arxiv.org/abs/2606.13662v1",
+      "score": 0,
+      "subdomain": "Agents & Reasoning",
+      "authors": "Amy Xin, Jiening Siow, Junjie Wang et al.",
+      "published": "2026-06-11",
+      "lay_summary": "This paper introduces EurekAgent, an innovative approach to building autonomous AI agents for scientific discovery. Instead of solely focusing on the agent's internal reasoning or workflow, the authors argue that the key bottleneck is now \"environment engineering\"—designing the resources, constraints, and interfaces that shape the agent's behavior. They propose that by carefully engineering the environment, one can amplify productive behaviors like open-ended exploration and collaboration, while suppressing undesirable ones such as \"reward hacking\" or high-friction human oversight.\n\nEurekAgent implements this concept through four dimensions: permissions engineering (for safe execution), artifact engineering (for systematic data and code management), budget engineering (for cost-aware exploration), and human-in-the-loop engineering (for easy supervision). The system demonstrates impressive results, achieving new state-of-the-art performance on various mathematics, kernel engineering, and machine learning tasks. Notably, it discovered a new 26-circle packing solution for less than $11 in API costs, highlighting its efficiency. This work suggests a powerful new paradigm for developing reliable and cost-effective autonomous research agents.",
+      "what_is_new": "This paper introduces \"environment engineering\" as a core research direction for autonomous scientific discovery agents, shifting focus from agent workflows. It presents EurekAgent, a system demonstrating this approach, achieving new state-of-the-art results on complex tasks with remarkably low API costs."
+    },
+    {
+      "arxiv_id": "2606.13658",
+      "title": "Before You Think: System 0, AI-Mediated Cognition and Cognitive Colonization",
+      "url": "https://arxiv.org/abs/2606.13658v1",
+      "score": 0,
+      "subdomain": "Alignment, Safety & Ethics",
+      "authors": "Marianna Bergamaschi Ganapini, Massimo Chiriatti, Enrico Panai et al.",
+      "published": "2026-06-11",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.13657",
+      "title": "Dense Supervision, Sparse Updates: On the Sparsity and Geometry of On-Policy Distillation",
+      "url": "https://arxiv.org/abs/2606.13657v1",
+      "score": 0,
+      "subdomain": "Foundation Models & LLMs",
+      "authors": "Guo Yu, Wenlin Liu, Yulan Hu et al.",
+      "published": "2026-06-11",
+      "lay_summary": "",
+      "what_is_new": ""
+    }
+  ],
+  "sample": false
+}

@@ -1,0 +1,68 @@
+{
+  "week_start": "2026-06-02",
+  "week_end": "2026-06-09",
+  "generated_at_utc": "2026-06-09T10:00:00+00:00",
+  "categories": [
+    "cs.AI",
+    "cs.CV",
+    "cs.LG",
+    "eess.AS",
+    "cs.HC",
+    "eess.SP"
+  ],
+  "total_papers": 4,
+  "subdomain_counts": {
+    "Agents & Reasoning": 1,
+    "Efficiency, Compression & Inference": 1,
+    "Audio, Speech & Music": 1,
+    "Multimodal & Vision-Language": 1
+  },
+  "column_markdown": "# This week in AI research\n\n## The week at a glance\nThis is a sample weekly column generated to demonstrate the public page. In a real week this section reads as a 300-420 word editorial characterising the dominant energy of the research week, what surprised the editor, and the patterns that emerge across sub-domains. It is the hero content of the page.\n\n## What's moving\n- Sample trend bullet about a force visible across multiple papers this week.\n- Second sample trend bullet about another landscape-level shift worth noting.\n\n## Papers worth your attention\n**[Sample Paper: Verifier-Gated Long-Horizon Agents](https://arxiv.org/abs/0000.00001)** — A sample annotation of what it is. Why it matters for practitioners in one sentence.\n\n## Horizon signals\n- A sample early-stage signal worth tracking before it becomes mainstream.\n\n## This week's caveats\nA sample paragraph on what readers should not conclude from this week's papers.",
+  "top_papers": [
+    {
+      "arxiv_id": "0000.00001",
+      "title": "Sample Paper: Verifier-Gated Long-Horizon Agents",
+      "url": "https://arxiv.org/abs/0000.00001",
+      "score": 86,
+      "subdomain": "Agents & Reasoning",
+      "authors": "A. Researcher, B. Scientist, C. Author et al.",
+      "published": "2026-06-05",
+      "lay_summary": "This sample paper demonstrates the public page format with a realistic length of prose so the card renders the way a true entry would. It describes a method, an evaluation, and a practical takeaway for readers who want to understand what the work means without reading the original. The summary runs long enough to satisfy validation rules and ends cleanly.",
+      "what_is_new": "A placeholder contribution line describing exactly what did not exist before this sample paper was invented for testing."
+    },
+    {
+      "arxiv_id": "0000.00002",
+      "title": "Sample Paper: Sparse Attention at Inference Time",
+      "url": "https://arxiv.org/abs/0000.00002",
+      "score": 81,
+      "subdomain": "Efficiency, Compression & Inference",
+      "authors": "A. Researcher, B. Scientist, C. Author et al.",
+      "published": "2026-06-05",
+      "lay_summary": "This sample paper demonstrates the public page format with a realistic length of prose so the card renders the way a true entry would. It describes a method, an evaluation, and a practical takeaway for readers who want to understand what the work means without reading the original. The summary runs long enough to satisfy validation rules and ends cleanly.",
+      "what_is_new": "A placeholder contribution line describing exactly what did not exist before this sample paper was invented for testing."
+    },
+    {
+      "arxiv_id": "0000.00003",
+      "title": "Sample Paper: Audio-Visual Saliency from fMRI Priors",
+      "url": "https://arxiv.org/abs/0000.00003",
+      "score": 77,
+      "subdomain": "Audio, Speech & Music",
+      "authors": "A. Researcher, B. Scientist, C. Author et al.",
+      "published": "2026-06-05",
+      "lay_summary": "This sample paper demonstrates the public page format with a realistic length of prose so the card renders the way a true entry would. It describes a method, an evaluation, and a practical takeaway for readers who want to understand what the work means without reading the original. The summary runs long enough to satisfy validation rules and ends cleanly.",
+      "what_is_new": "A placeholder contribution line describing exactly what did not exist before this sample paper was invented for testing."
+    },
+    {
+      "arxiv_id": "0000.00004",
+      "title": "Sample Paper: Benchmarking Multimodal Reasoning",
+      "url": "https://arxiv.org/abs/0000.00004",
+      "score": 70,
+      "subdomain": "Multimodal & Vision-Language",
+      "authors": "A. Researcher, B. Scientist, C. Author et al.",
+      "published": "2026-06-05",
+      "lay_summary": "This sample paper demonstrates the public page format with a realistic length of prose so the card renders the way a true entry would. It describes a method, an evaluation, and a practical takeaway for readers who want to understand what the work means without reading the original. The summary runs long enough to satisfy validation rules and ends cleanly.",
+      "what_is_new": "A placeholder contribution line describing exactly what did not exist before this sample paper was invented for testing."
+    }
+  ],
+  "sample": true
+}

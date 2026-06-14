@@ -1,0 +1,162 @@
+{
+  "week_start": "2026-06-07",
+  "week_end": "2026-06-14",
+  "generated_at_utc": "2026-06-14T17:37:12.353284+00:00",
+  "categories": [
+    "cs.AI",
+    "cs.CV",
+    "cs.LG",
+    "eess.AS",
+    "cs.HC",
+    "eess.SP"
+  ],
+  "total_papers": 54,
+  "subdomain_counts": {
+    "Agents & Reasoning": 7,
+    "Robotics & Embodied AI": 3,
+    "Computer Vision": 7,
+    "Other": 6,
+    "Foundation Models & LLMs": 6,
+    "Alignment, Safety & Ethics": 4,
+    "Scientific Applications": 7,
+    "Audio, Speech & Music": 9,
+    "Human-Computer Interaction": 4,
+    "Efficiency, Compression & Inference": 1
+  },
+  "column_markdown": "# This week in AI research\n\n## The week at a glance\nThis week’s research landscape signals a quiet but profound shift: we are moving past the era of passive, single-turn generation and entering the messy, real-time domain of active coordination. If the last year was about scaling model size to brute-force reasoning, this week is about models learning to negotiate their environments, whether that environment is a multi-party conversation, a complex 3D scene, or a human's cognitive bandwidth.\n\nIn the audio and speech domain, the focus has sharply pivoted toward latency and social mechanics. We are seeing a concerted effort to solve the \"awkward pause\" problem in voice agents. Instead of waiting for silence, models are now proactively forecasting conversational endpoints seconds in advance or adjusting their turn-taking behavior based on assigned social roles. This isn't just about faster inference; it is about teaching models the unwritten rules of human interaction.\n\nSimultaneously, computer vision is undergoing a geometric awakening. Researchers are realizing that large text-to-image models already contain rich, implicit spatial understandings of our world. Rather than training massive 3D models from scratch, the trend is to extract this latent geometry—whether through \"modality forcing\" to generate simultaneous depth maps, or \"world tracing\" to predict occluded surfaces behind visible objects. We are learning to treat 2D generative models as highly capable, albeit latent, physics engines.\n\nFinally, the agentic space is experiencing a healthy dose of pragmatism. The bottleneck for autonomous scientific discovery and spatial reasoning is shifting away from prompt engineering and toward \"environment engineering\" and dynamic tool interfaces. Researchers are realizing that an agent is only as good as the sandbox it plays in.\n\nOverall, the dominant energy this week is one of refinement and integration. It is a week where practitioners should look closely at how models bridge the gap between digital generation and physical-world constraints. The hype of \"AGI next month\" is absent; in its place is the hard, necessary engineering of real-time, multi-modal systems that can actually operate alongside humans without driving them crazy.\n\n## What's moving\n* **Proactive Conversational Mechanics**: Speech agents are moving from reactive silence-detection to proactive turn-taking, using role-conditioning and endpoint anticipation to drastically reduce latency in multi-party settings.\n* **Latent Spatial Extraction**: Instead of training dedicated 3D models, researchers are successfully extracting implicit geometric and depth priors directly from pre-trained 2D text-to-image diffusion models.\n* **Agent Environment Engineering**: The focus in autonomous agents is shifting from optimizing internal workflows to engineering the external environments, resources, and tool interfaces they interact with.\n* **Cognitive-Load Awareness**: Human-AI interaction is beginning to incorporate real-time physiological feedback, such as consumer brain-computer interfaces, to dynamically queue agent interruptions based on human cognitive bandwidth.\n\n## Papers worth your attention\n**[Modality Forcing for Scal",
+  "top_papers": [
+    {
+      "arxiv_id": "2606.13680",
+      "title": "Learning to Reason by Analogy via Retrieval-Augmented Reinforcement Fine-Tuning",
+      "url": "https://arxiv.org/abs/2606.13680v1",
+      "score": 0,
+      "subdomain": "Agents & Reasoning",
+      "authors": "Zilin Xiao, Qi Ma, Chun-cheng Jason Chen et al.",
+      "published": "2026-06-11",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.13679",
+      "title": "InterleaveThinker: Reinforcing Agentic Interleaved Generation",
+      "url": "https://arxiv.org/abs/2606.13679v1",
+      "score": 0,
+      "subdomain": "Agents & Reasoning",
+      "authors": "Dian Zheng, Harry Lee, Manyuan Zhang et al.",
+      "published": "2026-06-11",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.13677",
+      "title": "Mana: Dexterous Manipulation of Articulated Tools",
+      "url": "https://arxiv.org/abs/2606.13677v1",
+      "score": 0,
+      "subdomain": "Robotics & Embodied AI",
+      "authors": "Zhao-Heng Yin, Guanya Shi, Pieter Abbeel et al.",
+      "published": "2026-06-11",
+      "lay_summary": "Robots struggle with dexterous manipulation, especially when using tools that have moving parts, like scissors or pliers. This is because the robot needs to coordinate its own movements with the internal degrees of freedom of the tool, leading to complex interactions. This paper introduces \"Mana\" (Manipulation Animator), a novel framework that simplifies this challenge by treating tool manipulation as an animation problem. Mana uses a coarse-to-fine approach: first, a human quickly defines a few key poses (keyframes) for the tool's function with minimal clicks. Then, motion planning and reinforcement learning automatically generate the detailed manipulation trajectories between these keyframes. This process is largely automatic and requires very little human effort. The researchers demonstrated Mana's ability to achieve zero-shot sim-to-real transfer, meaning policies learned in simulation worked directly on real robots without further training, across four different articulated tools. This makes Mana a scalable and efficient way for robots to learn and perform complex tasks involving articulated tools, significantly advancing the practical capabilities of dexterous robotics.",
+      "what_is_new": "Mana reinterprets dexterous articulated tool manipulation as an animation problem, enabling a coarse-to-fine pipeline. This novel approach combines minimal user-defined grasp keyframes with automated motion planning and reinforcement learning for efficient data generation and zero-shot sim-to-real transfer."
+    },
+    {
+      "arxiv_id": "2606.13676",
+      "title": "Modality Forcing for Scalable Spatial Generation",
+      "url": "https://arxiv.org/abs/2606.13676v1",
+      "score": 0,
+      "subdomain": "Computer Vision",
+      "authors": "Bardienus Pieter Duisterhof, Deva Ramanan, Jeffrey Ichnowski et al.",
+      "published": "2026-06-11",
+      "lay_summary": "This paper introduces \"Modality Forcing,\" a straightforward and scalable method to enable existing text-to-image (T2I) models to generate not just images, but also their corresponding depth maps simultaneously. The core idea is to leverage the rich spatial understanding already present in large T2I models, which implicitly learn geometry and perspective from vast image datasets. Unlike prior attempts that often require dense depth data and complex training setups, Modality Forcing uses sparse, real-world depth information during a post-training phase. It achieves this by assigning separate noise levels to the image and depth modalities and employing distinct decoders for each, allowing for flexible conditional generation. The researchers demonstrate that this approach scales effectively: larger T2I models, pre-trained on more image data, produce more accurate depth predictions. Their strongest model performs comparably to state-of-the-art monocular depth estimators and significantly improves upon existing joint image-depth generative models, highlighting that image generation is a powerful pre-training objective for spatial perception tasks. This means practitioners can potentially create 3D-aware content more easily, reducing the need for extensive 3D modeling or specialized depth sensors.",
+      "what_is_new": "This paper introduces \"Modality Forcing,\" a simple, scalable post-training recipe for joint image-depth generation using DiT models trained on sparse depth data. It enables conditional generation with per-modality noise levels and decoders, demonstrating that T2I pre-training scales effectively for spatial perception."
+    },
+    {
+      "arxiv_id": "2606.13674",
+      "title": "RepWAM: World Action Modeling with Representation Visual-Action Tokenizers",
+      "url": "https://arxiv.org/abs/2606.13674v1",
+      "score": 0,
+      "subdomain": "Robotics & Embodied AI",
+      "authors": "Junke Wang, Qihang Zhang, Shuai Yang et al.",
+      "published": "2026-06-11",
+      "lay_summary": "This paper introduces RepWAM, a novel approach to \"world action modeling\" (WAM) designed to improve how robots understand and interact with their environment. Traditional WAMs often rely on video tokenizers that focus on reconstructing visual details, which is great for visual fidelity but less effective for teaching robots to follow instructions and control their actions. RepWAM addresses this by developing a \"representation visual-action tokenizer\" that learns a semantic understanding of both visual inputs and the underlying actions connecting them. This creates an aligned latent space where visual states and the actions that transform them are jointly modeled under language instructions. The model is first pretrained and then adapted to real robot trajectories for precise, closed-loop manipulation. This method promises more robust and generalizable robot control, enabling robots to learn new tasks faster and perform them more reliably in real-world settings.",
+      "what_is_new": "This paper introduces RepWAM, a world action model built on novel representation visual-action tokenizers. These tokenizers create an aligned semantic latent space for visual inputs and latent actions, specifically designed for instruction-following dynamics and robot control."
+    },
+    {
+      "arxiv_id": "2606.13673",
+      "title": "SpatialClaw: Rethinking Action Interface for Agentic Spatial Reasoning",
+      "url": "https://arxiv.org/abs/2606.13673v1",
+      "score": 0,
+      "subdomain": "Agents & Reasoning",
+      "authors": "Seokju Cho, Ryo Hachiuma, Abhishek Badki et al.",
+      "published": "2026-06-11",
+      "lay_summary": "Vision-language models (VLMs) struggle with complex spatial reasoning, such as understanding object relationships and movement in 3D/4D environments. Existing agentic approaches either commit to a full analysis strategy upfront or use rigid tool-call interfaces, limiting their flexibility. This paper introduces SpatialClaw, a training-free framework that rethinks how agents interact with perception tools. SpatialClaw uses a stateful Python kernel as its action interface, pre-loaded with input frames and a suite of perception and geometry primitives. This allows a VLM-backed agent to write and execute one code cell at a time, iteratively composing operations and adapting its analysis based on intermediate text and visual observations. This flexible, adaptive approach significantly improves spatial reasoning. Evaluated across 20 diverse 3D/4D spatial reasoning benchmarks, SpatialClaw achieved an average accuracy of 59.9%, outperforming a recent spatial agent by 11.2 points. The framework shows consistent gains across six different VLM backbones without any task- or model-specific adaptation, making it a robust solution for enhancing agentic spatial intelligence.",
+      "what_is_new": "SpatialClaw introduces a novel \"code as action interface\" within a stateful Python kernel for VLM-backed agents. This enables flexible, iterative composition and manipulation of perception results, adapting analysis to intermediate observations for complex 3D/4D spatial reasoning."
+    },
+    {
+      "arxiv_id": "2606.13671",
+      "title": "Understanding Truncated Positional Encodings for Graph Neural Networks",
+      "url": "https://arxiv.org/abs/2606.13671v1",
+      "score": 0,
+      "subdomain": "Other",
+      "authors": "James Flora, Mitchell Black, Weng-Keen Wong et al.",
+      "published": "2026-06-11",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.13670",
+      "title": "Automated reproducibility assessments in the social and behavioral sciences using large language models",
+      "url": "https://arxiv.org/abs/2606.13670v1",
+      "score": 0,
+      "subdomain": "Foundation Models & LLMs",
+      "authors": "Tobias Holtdirk, Pietro Marcolongo, Anna Steinberg Schulten et al.",
+      "published": "2026-06-11",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.13669",
+      "title": "Agents-K1: Towards Agent-native Knowledge Orchestration",
+      "url": "https://arxiv.org/abs/2606.13669v1",
+      "score": 0,
+      "subdomain": "Agents & Reasoning",
+      "authors": "Zongsheng Cao, Bihao Zhan, Jinxin Shi et al.",
+      "published": "2026-06-11",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.13662",
+      "title": "EurekAgent: Agent Environment Engineering is All You Need For Autonomous Scientific Discovery",
+      "url": "https://arxiv.org/abs/2606.13662v1",
+      "score": 0,
+      "subdomain": "Agents & Reasoning",
+      "authors": "Amy Xin, Jiening Siow, Junjie Wang et al.",
+      "published": "2026-06-11",
+      "lay_summary": "This paper introduces EurekAgent, an LLM-based agent system designed to automate scientific discovery by focusing on \"environment engineering.\" The authors argue that as LLM capabilities improve, the bottleneck for autonomous discovery shifts from designing agent workflows to crafting the environment in which agents operate. This environment includes the resources, constraints, and interfaces that shape agent behavior. EurekAgent engineers this environment across four key dimensions: permissions for secure execution, artifact management for collaboration via filesystems and Git, budget awareness for cost-effective exploration, and human-in-the-loop mechanisms for easy supervision. By implementing these environmental controls, EurekAgent aims to amplify productive behaviors like open-ended exploration and systematic management, while suppressing harmful ones such as reward hacking. The system demonstrates state-of-the-art results on various tasks, including mathematics, kernel engineering, and machine learning, notably discovering new 26-circle packing results for less than $11 in API costs. Practitioners should care because this approach offers a practical framework for building more reliable, efficient, and effective autonomous agents for complex problem-solving.",
+      "what_is_new": "The core novelty is framing \"environment engineering\" as the primary bottleneck and solution for autonomous scientific discovery agents. This involves a systematic approach across permissions, artifact, budget, and human-in-the-loop dimensions. EurekAgent is presented as a concrete system demonstrating this paradigm, achieving new state-of-the-art results with remarkably low API costs."
+    },
+    {
+      "arxiv_id": "2606.13658",
+      "title": "Before You Think: System 0, AI-Mediated Cognition and Cognitive Colonization",
+      "url": "https://arxiv.org/abs/2606.13658v1",
+      "score": 0,
+      "subdomain": "Alignment, Safety & Ethics",
+      "authors": "Marianna Bergamaschi Ganapini, Massimo Chiriatti, Enrico Panai et al.",
+      "published": "2026-06-11",
+      "lay_summary": "This paper delves into the subtle ways artificial intelligence influences human thought and decision-making, examining three existing theoretical frameworks: Tri-System Theory, Thinkframes, and System 0. It argues that while the first two offer valuable insights into how AI affects individual reasoning and shared knowledge practices, the concept of \"System 0\" holds a unique position that better explains a deeper form of AI influence. The authors introduce a new concept, \"cognitive colonization,\" to describe how AI systems can subtly embed external interests directly into a user's cognitive architecture, often without the user's conscious awareness. This means AI isn't just helping us think; it might be shaping *how* we think and *what* we value in ways that serve external agendas. The paper highlights the urgency of understanding these invisible influences, as such systems are already widely deployed, making this a critical philosophical and practical challenge for anyone building or using AI.",
+      "what_is_new": "This paper introduces the concept of \"cognitive colonization,\" arguing that AI can embed external interests within a user's cognitive architecture in ways that are difficult to perceive. It also positions \"System 0\" as a distinct theoretical framework for understanding AI's cognitive impact, beyond existing Tri-System Theory and Thinkframes."
+    },
+    {
+      "arxiv_id": "2606.13657",
+      "title": "Dense Supervision, Sparse Updates: On the Sparsity and Geometry of On-Policy Distillation",
+      "url": "https://arxiv.org/abs/2606.13657v1",
+      "score": 0,
+      "subdomain": "Foundation Models & LLMs",
+      "authors": "Guo Yu, Wenlin Liu, Yulan Hu et al.",
+      "published": "2026-06-11",
+      "lay_summary": "This paper investigates the internal workings of On-Policy Distillation (OPD), a post-training method that combines on-policy student trajectories with dense teacher supervision for language and vision-language models. The researchers aimed to clarify how OPD changes a model's parameters, which was previously unclear. Their analysis revealed two main findings: first, OPD updates are surprisingly small and \"coordinate-sparse,\" meaning they affect only a small fraction of parameters, primarily within the feed-forward networks (FFNs) across different layers. Crucially, they found that training only this discovered sparse subnetwork achieves nearly the same performance as full OPD, suggesting a path to significant efficiency gains. Second, despite the dense supervision from the teacher model, the parameter updates retain unique geometric properties; they are numerically full-rank but spectrally concentrated, often falling on parameters close to zero in the original model. This indicates that OPD is not simply a dense rewriting of parameters but preserves distinct characteristics of on-policy post-training. Practitioners should care because these insights could lead to more efficient and targeted distillation strategies, potentially reducing computational costs for fine-tuning and deploying smaller, high-performing models.",
+      "what_is_new": "This paper provides a detailed empirical analysis revealing the sparsity and geometric properties of parameter updates during On-Policy Distillation (OPD). Specifically, it's a new finding that OPD updates are coordinate-sparse and that training only these identified subnetworks can achieve comparable performance to full OPD. It also clarifies that dense teacher supervision does not eliminate the unique geometric signatures of on-policy post-training."
+    }
+  ],
+  "sample": false
+}

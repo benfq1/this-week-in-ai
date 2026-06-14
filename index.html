@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>This Week in AI Research — 2026-06-07 → 2026-06-14</title>
+<meta name="description" content="A weekly, human-readable analysis of the AI research landscape, built from every new arXiv paper across cs.AI, cs.CV, cs.LG, eess.AS, cs.HC, eess.SP.">
+<style>
+:root{--ink:#1a1a1f;--muted:#5d5d68;--faint:#8a8a96;--bg:#faf9f7;--card:#ffffff;
+--line:#e7e4de;--accent:#0f4c81;--accent2:#b34700;--tag:#eef2f7;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+font:17px/1.65 Georgia,'Times New Roman',serif;}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px 80px;}
+header.masthead{border-bottom:3px double var(--ink);padding:40px 0 18px;margin-bottom:8px;}
+.masthead h1{font-size:34px;margin:0 0 6px;letter-spacing:-.5px;}
+.masthead .meta{font-family:system-ui,sans-serif;font-size:13px;color:var(--muted);
+text-transform:uppercase;letter-spacing:.08em;}
+.sample-banner{background:#fff3cd;border:1px solid #e0c656;color:#6b5400;
+font-family:system-ui,sans-serif;font-size:14px;padding:10px 14px;border-radius:6px;margin:18px 0;}
+.column h1.col-title{display:none}
+.column h2{font-size:22px;margin:34px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px;}
+.column p{margin:0 0 14px}
+.column ul{padding-left:22px;margin:0 0 14px}
+.column li{margin-bottom:8px}
+section.papers h2,section.landscape h2,section.archive h2{font-size:22px;margin:44px 0 14px;
+border-bottom:1px solid var(--line);padding-bottom:6px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+padding:18px 20px;margin-bottom:14px;}
+.card h3{margin:0 0 6px;font-size:18px;line-height:1.35;}
+.card h3 a{color:var(--accent);text-decoration:none}
+.card h3 a:hover{text-decoration:underline}
+.card .byline{font-family:system-ui,sans-serif;font-size:12.5px;color:var(--faint);margin-bottom:10px;}
+.tag{display:inline-block;background:var(--tag);color:var(--accent);font-family:system-ui,sans-serif;
+font-size:11.5px;padding:2px 9px;border-radius:99px;margin-right:8px;vertical-align:1px;}
+.card p{margin:0 0 8px;font-size:15.5px;color:#2c2c33}
+.card .new{font-size:14.5px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px;}
+.chart-box{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px;}
+.trend-note{font-family:system-ui,sans-serif;font-size:13.5px;color:var(--muted);margin-top:10px;}
+.archive ul{list-style:none;padding:0}
+.archive li{font-family:system-ui,sans-serif;font-size:15px;margin-bottom:6px;}
+footer{margin-top:60px;border-top:1px solid var(--line);padding-top:18px;
+font-family:system-ui,sans-serif;font-size:13px;color:var(--faint);}
+a{color:var(--accent)}
+@media(max-width:600px){.masthead h1{font-size:26px}body{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <h1>This Week in AI Research</h1>
+  <div class="meta">2026-06-07 → 2026-06-14 · 54 papers scanned · cs.AI, cs.CV, cs.LG, eess.AS, cs.HC, eess.SP</div>
+</header>
+
+
+<section class="column">
+<h1 class='col-title'>This week in AI research</h1>
+<h2>The week at a glance</h2>
+<p>This week’s research landscape signals a quiet but profound shift: we are moving past the era of passive, single-turn generation and entering the messy, real-time domain of active coordination. If the last year was about scaling model size to brute-force reasoning, this week is about models learning to negotiate their environments, whether that environment is a multi-party conversation, a complex 3D scene, or a human&#x27;s cognitive bandwidth.</p>
+<p>In the audio and speech domain, the focus has sharply pivoted toward latency and social mechanics. We are seeing a concerted effort to solve the &quot;awkward pause&quot; problem in voice agents. Instead of waiting for silence, models are now proactively forecasting conversational endpoints seconds in advance or adjusting their turn-taking behavior based on assigned social roles. This isn&#x27;t just about faster inference; it is about teaching models the unwritten rules of human interaction.</p>
+<p>Simultaneously, computer vision is undergoing a geometric awakening. Researchers are realizing that large text-to-image models already contain rich, implicit spatial understandings of our world. Rather than training massive 3D models from scratch, the trend is to extract this latent geometry—whether through &quot;modality forcing&quot; to generate simultaneous depth maps, or &quot;world tracing&quot; to predict occluded surfaces behind visible objects. We are learning to treat 2D generative models as highly capable, albeit latent, physics engines.</p>
+<p>Finally, the agentic space is experiencing a healthy dose of pragmatism. The bottleneck for autonomous scientific discovery and spatial reasoning is shifting away from prompt engineering and toward &quot;environment engineering&quot; and dynamic tool interfaces. Researchers are realizing that an agent is only as good as the sandbox it plays in.</p>
+<p>Overall, the dominant energy this week is one of refinement and integration. It is a week where practitioners should look closely at how models bridge the gap between digital generation and physical-world constraints. The hype of &quot;AGI next month&quot; is absent; in its place is the hard, necessary engineering of real-time, multi-modal systems that can actually operate alongside humans without driving them crazy.</p>
+<h2>What&#x27;s moving</h2>
+<ul>
+<li><strong>Proactive Conversational Mechanics</strong>: Speech agents are moving from reactive silence-detection to proactive turn-taking, using role-conditioning and endpoint anticipation to drastically reduce latency in multi-party settings.</li>
+<li><strong>Latent Spatial Extraction</strong>: Instead of training dedicated 3D models, researchers are successfully extracting implicit geometric and depth priors directly from pre-trained 2D text-to-image diffusion models.</li>
+<li><strong>Agent Environment Engineering</strong>: The focus in autonomous agents is shifting from optimizing internal workflows to engineering the external environments, resources, and tool interfaces they interact with.</li>
+<li><strong>Cognitive-Load Awareness</strong>: Human-AI interaction is beginning to incorporate real-time physiological feedback, such as consumer brain-computer interfaces, to dynamically queue agent interruptions based on human cognitive bandwidth.</li>
+</ul>
+<h2>Papers worth your attention</h2>
+<p>**[Modality Forcing for Scal</p>
+</section>
+
+<section class="papers">
+  <h2>Top papers this week</h2>
+  
+<article class="card">
+  <h3><a href="https://arxiv.org/abs/2606.13680v1" target="_blank" rel="noopener">Learning to Reason by Analogy via Retrieval-Augmented Reinforcement Fine-Tuning</a></h3>
+  <div class="byline"><span class="tag">Agents &amp; Reasoning</span>Zilin Xiao, Qi Ma, Chun-cheng Jason Chen et al. · 2026-06-11</div>
+  <p></p>
+  
+</article>
+<article class="card">
+  <h3><a href="https://arxiv.org/abs/2606.13679v1" target="_blank" rel="noopener">InterleaveThinker: Reinforcing Agentic Interleaved Generation</a></h3>
+  <div class="byline"><span class="tag">Agents &amp; Reasoning</span>Dian Zheng, Harry Lee, Manyuan Zhang et al. · 2026-06-11</div>
+  <p></p>
+  
+</article>
+<article class="card">
+  <h3><a href="https://arxiv.org/abs/2606.13677v1" target="_blank" rel="noopener">Mana: Dexterous Manipulation of Articulated Tools</a></h3>
+  <div class="byline"><span class="tag">Robotics &amp; Embodied AI</span>Zhao-Heng Yin, Guanya Shi, Pieter Abbeel et al. · 2026-06-11</div>
+  <p>Robots struggle with dexterous manipulation, especially when using tools that have moving parts, like scissors or pliers. This is because the robot needs to coordinate its own movements with the internal degrees of freedom of the tool, leading to complex interactions. This paper introduces &quot;Mana&quot; (Manipulation Animator), a novel framework that simplifies this challenge by treating tool manipulation as an animation problem. Mana uses a coarse-to-fine approach: first, a human quickly defines a few key poses (keyframes) for the tool&#x27;s function with minimal clicks. Then, motion planning and reinforcement learning automatically generate the detailed manipulation trajectories between these keyframes. This process is largely automatic and requires very little human effort. The researchers demonstrated Mana&#x27;s ability to achieve zero-shot sim-to-real transfer, meaning policies learned in simulation worked directly on real robots without further training, across four different articulated tools. This makes Mana a scalable and efficient way for robots to learn and perform complex tasks involving articulated tools, significantly advancing the practical capabilities of dexterous robotics.</p>
+  <p class="new"><strong>New here:</strong> Mana reinterprets dexterous articulated tool manipulation as an animation problem, enabling a coarse-to-fine pipeline. This novel approach combines minimal user-defined grasp keyframes with automated motion planning and reinforcement learning for efficient data generation and zero-shot sim-to-real transfer.</p>
+</article>
+<article class="card">
+  <h3><a href="https://arxiv.org/abs/2606.13676v1" target="_blank" rel="noopener">Modality Forcing for Scalable Spatial Generation</a></h3>
+  <div class="byline"><span class="tag">Computer Vision</span>Bardienus Pieter Duisterhof, Deva Ramanan, Jeffrey Ichnowski et al. · 2026-06-11</div>
+  <p>This paper introduces &quot;Modality Forcing,&quot; a straightforward and scalable method to enable existing text-to-image (T2I) models to generate not just images, but also their corresponding depth maps simultaneously. The core idea is to leverage the rich spatial understanding already present in large T2I models, which implicitly learn geometry and perspective from vast image datasets. Unlike prior attempts that often require dense depth data and complex training setups, Modality Forcing uses sparse, real-world depth information during a post-training phase. It achieves this by assigning separate noise levels to the image and depth modalities and employing distinct decoders for each, allowing for flexible conditional generation. The researchers demonstrate that this approach scales effectively: larger T2I models, pre-trained on more image data, produce more accurate depth predictions. Their strongest model performs comparably to state-of-the-art monocular depth estimators and significantly improves upon existing joint image-depth generative models, highlighting that image generation is a powerful pre-training objective for spatial perception tasks. This means practitioners can potentially create 3D-aware content more easily, reducing the need for extensive 3D modeling or specialized depth sensors.</p>
+  <p class="new"><strong>New here:</strong> This paper introduces &quot;Modality Forcing,&quot; a simple, scalable post-training recipe for joint image-depth generation using DiT models trained on sparse depth data. It enables conditional generation with per-modality noise levels and decoders, demonstrating that T2I pre-training scales effectively for spatial perception.</p>
+</article>
+<article class="card">
+  <h3><a href="https://arxiv.org/abs/2606.13674v1" target="_blank" rel="noopener">RepWAM: World Action Modeling with Representation Visual-Action Tokenizers</a></h3>
+  <div class="byline"><span class="tag">Robotics &amp; Embodied AI</span>Junke Wang, Qihang Zhang, Shuai Yang et al. · 2026-06-11</div>
+  <p>This paper introduces RepWAM, a novel approach to &quot;world action modeling&quot; (WAM) designed to improve how robots understand and interact with their environment. Traditional WAMs often rely on video tokenizers that focus on reconstructing visual details, which is great for visual fidelity but less effective for teaching robots to follow instructions and control their actions. RepWAM addresses this by developing a &quot;representation visual-action tokenizer&quot; that learns a semantic understanding of both visual inputs and the underlying actions connecting them. This creates an aligned latent space where visual states and the actions that transform them are jointly modeled under language instructions. The model is first pretrained and then adapted to real robot trajectories for precise, closed-loop manipulation. This method promises more robust and generalizable robot control, enabling robots to learn new tasks faster and perform them more reliably in real-world settings.</p>
+  <p class="new"><strong>New here:</strong> This paper introduces RepWAM, a world action model built on novel representation visual-action tokenizers. These tokenizers create an aligned semantic latent space for visual inputs and latent actions, specifically designed for instruction-following dynamics and robot control.</p>
+</article>
+<article class="card">
+  <h3><a href="https://arxiv.org/abs/2606.13673v1" target="_blank" rel="noopener">SpatialClaw: Rethinking Action Interface for Agentic Spatial Reasoning</a></h3>
+  <div class="byline"><span class="tag">Agents &amp; Reasoning</span>Seokju Cho, Ryo Hachiuma, Abhishek Badki et al. · 2026-06-11</div>
+  <p>Vision-language models (VLMs) struggle with complex spatial reasoning, such as understanding object relationships and movement in 3D/4D environments. Existing agentic approaches either commit to a full analysis strategy upfront or use rigid tool-call interfaces, limiting their flexibility. This paper introduces SpatialClaw, a training-free framework that rethinks how agents interact with perception tools. SpatialClaw uses a stateful Python kernel as its action interface, pre-loaded with input frames and a suite of perception and geometry primitives. This allows a VLM-backed agent to write and execute one code cell at a time, iteratively composing operations and adapting its analysis based on intermediate text and visual observations. This flexible, adaptive approach significantly improves spatial reasoning. Evaluated across 20 diverse 3D/4D spatial reasoning benchmarks, SpatialClaw achieved an average accuracy of 59.9%, outperforming a recent spatial agent by 11.2 points. The framework shows consistent gains across six different VLM backbones without any task- or model-specific adaptation, making it a robust solution for enhancing agentic spatial intelligence.</p>
+  <p class="new"><strong>New here:</strong> SpatialClaw introduces a novel &quot;code as action interface&quot; within a stateful Python kernel for VLM-backed agents. This enables flexible, iterative composition and manipulation of perception results, adapting analysis to intermediate observations for complex 3D/4D spatial reasoning.</p>
+</article>
+<article class="card">
+  <h3><a href="https://arxiv.org/abs/2606.13671v1" target="_blank" rel="noopener">Understanding Truncated Positional Encodings for Graph Neural Networks</a></h3>
+  <div class="byline"><span class="tag">Other</span>James Flora, Mitchell Black, Weng-Keen Wong et al. · 2026-06-11</div>
+  <p></p>
+  
+</article>
+<article class="card">
+  <h3><a href="https://arxiv.org/abs/2606.13670v1" target="_blank" rel="noopener">Automated reproducibility assessments in the social and behavioral sciences using large language models</a></h3>
+  <div class="byline"><span class="tag">Foundation Models &amp; LLMs</span>Tobias Holtdirk, Pietro Marcolongo, Anna Steinberg Schulten et al. · 2026-06-11</div>
+  <p></p>
+  
+</article>
+<article class="card">
+  <h3><a href="https://arxiv.org/abs/2606.13669v1" target="_blank" rel="noopener">Agents-K1: Towards Agent-native Knowledge Orchestration</a></h3>
+  <div class="byline"><span class="tag">Agents &amp; Reasoning</span>Zongsheng Cao, Bihao Zhan, Jinxin Shi et al. · 2026-06-11</div>
+  <p></p>
+  
+</article>
+<article class="card">
+  <h3><a href="https://arxiv.org/abs/2606.13662v1" target="_blank" rel="noopener">EurekAgent: Agent Environment Engineering is All You Need For Autonomous Scientific Discovery</a></h3>
+  <div class="byline"><span class="tag">Agents &amp; Reasoning</span>Amy Xin, Jiening Siow, Junjie Wang et al. · 2026-06-11</div>
+  <p>This paper introduces EurekAgent, an LLM-based agent system designed to automate scientific discovery by focusing on &quot;environment engineering.&quot; The authors argue that as LLM capabilities improve, the bottleneck for autonomous discovery shifts from designing agent workflows to crafting the environment in which agents operate. This environment includes the resources, constraints, and interfaces that shape agent behavior. EurekAgent engineers this environment across four key dimensions: permissions for secure execution, artifact management for collaboration via filesystems and Git, budget awareness for cost-effective exploration, and human-in-the-loop mechanisms for easy supervision. By implementing these environmental controls, EurekAgent aims to amplify productive behaviors like open-ended exploration and systematic management, while suppressing harmful ones such as reward hacking. The system demonstrates state-of-the-art results on various tasks, including mathematics, kernel engineering, and machine learning, notably discovering new 26-circle packing results for less than $11 in API costs. Practitioners should care because this approach offers a practical framework for building more reliable, efficient, and effective autonomous agents for complex problem-solving.</p>
+  <p class="new"><strong>New here:</strong> The core novelty is framing &quot;environment engineering&quot; as the primary bottleneck and solution for autonomous scientific discovery agents. This involves a systematic approach across permissions, artifact, budget, and human-in-the-loop dimensions. EurekAgent is presented as a concrete system demonstrating this paradigm, achieving new state-of-the-art results with remarkably low API costs.</p>
+</article>
+<article class="card">
+  <h3><a href="https://arxiv.org/abs/2606.13658v1" target="_blank" rel="noopener">Before You Think: System 0, AI-Mediated Cognition and Cognitive Colonization</a></h3>
+  <div class="byline"><span class="tag">Alignment, Safety &amp; Ethics</span>Marianna Bergamaschi Ganapini, Massimo Chiriatti, Enrico Panai et al. · 2026-06-11</div>
+  <p>This paper delves into the subtle ways artificial intelligence influences human thought and decision-making, examining three existing theoretical frameworks: Tri-System Theory, Thinkframes, and System 0. It argues that while the first two offer valuable insights into how AI affects individual reasoning and shared knowledge practices, the concept of &quot;System 0&quot; holds a unique position that better explains a deeper form of AI influence. The authors introduce a new concept, &quot;cognitive colonization,&quot; to describe how AI systems can subtly embed external interests directly into a user&#x27;s cognitive architecture, often without the user&#x27;s conscious awareness. This means AI isn&#x27;t just helping us think; it might be shaping *how* we think and *what* we value in ways that serve external agendas. The paper highlights the urgency of understanding these invisible influences, as such systems are already widely deployed, making this a critical philosophical and practical challenge for anyone building or using AI.</p>
+  <p class="new"><strong>New here:</strong> This paper introduces the concept of &quot;cognitive colonization,&quot; arguing that AI can embed external interests within a user&#x27;s cognitive architecture in ways that are difficult to perceive. It also positions &quot;System 0&quot; as a distinct theoretical framework for understanding AI&#x27;s cognitive impact, beyond existing Tri-System Theory and Thinkframes.</p>
+</article>
+<article class="card">
+  <h3><a href="https://arxiv.org/abs/2606.13657v1" target="_blank" rel="noopener">Dense Supervision, Sparse Updates: On the Sparsity and Geometry of On-Policy Distillation</a></h3>
+  <div class="byline"><span class="tag">Foundation Models &amp; LLMs</span>Guo Yu, Wenlin Liu, Yulan Hu et al. · 2026-06-11</div>
+  <p>This paper investigates the internal workings of On-Policy Distillation (OPD), a post-training method that combines on-policy student trajectories with dense teacher supervision for language and vision-language models. The researchers aimed to clarify how OPD changes a model&#x27;s parameters, which was previously unclear. Their analysis revealed two main findings: first, OPD updates are surprisingly small and &quot;coordinate-sparse,&quot; meaning they affect only a small fraction of parameters, primarily within the feed-forward networks (FFNs) across different layers. Crucially, they found that training only this discovered sparse subnetwork achieves nearly the same performance as full OPD, suggesting a path to significant efficiency gains. Second, despite the dense supervision from the teacher model, the parameter updates retain unique geometric properties; they are numerically full-rank but spectrally concentrated, often falling on parameters close to zero in the original model. This indicates that OPD is not simply a dense rewriting of parameters but preserves distinct characteristics of on-policy post-training. Practitioners should care because these insights could lead to more efficient and targeted distillation strategies, potentially reducing computational costs for fine-tuning and deploying smaller, high-performing models.</p>
+  <p class="new"><strong>New here:</strong> This paper provides a detailed empirical analysis revealing the sparsity and geometric properties of parameter updates during On-Policy Distillation (OPD). Specifically, it&#x27;s a new finding that OPD updates are coordinate-sparse and that training only these identified subnetworks can achieve comparable performance to full OPD. It also clarifies that dense teacher supervision does not eliminate the unique geometric signatures of on-policy post-training.</p>
+</article>
+</section>
+
+<section class="landscape">
+  <h2>The research landscape</h2>
+  <div class="chart-box">
+    <canvas id="subdomains" height="320"></canvas>
+    <div class="trend-note">Paper volume by sub-domain this week. Trend deltas appear once multiple weeks are archived.</div>
+  </div>
+</section>
+
+<section class="archive">
+  <h2>Past weeks</h2>
+  <ul><li><a href="data/2026-06-07.json">2026-06-07</a></li>
+<li><a href="data/2026-06-06.json">2026-06-06</a></li>
+<li><a href="data/2026-06-02.json">2026-06-02</a></li></ul>
+</section>
+
+<footer>
+  <p><strong>Methodology.</strong> Every new paper across cs.AI, cs.CV, cs.LG, eess.AS, cs.HC, eess.SP from the past week is analysed
+  with the assistance of large language models; papers are scored editorially for novelty, breadth, evidence
+  quality and timeliness, and the highest-scoring set informs the weekly column. Summaries describe paper
+  claims, not verified results. Mistakes are possible — always read the paper. Generated 2026-06-14.</p>
+</footer>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+const ctx = document.getElementById('subdomains');
+if (ctx && window.Chart) {
+  new Chart(ctx, {
+    type: 'bar',
+    data: { labels: ["Foundation Models & LLMs", "Agents & Reasoning", "Robotics & Embodied AI", "Computer Vision", "Audio, Speech & Music", "Alignment, Safety & Ethics", "Efficiency, Compression & Inference", "Scientific Applications", "Human-Computer Interaction", "Other"],
+      datasets: [{ data: [6, 7, 3, 7, 9, 4, 1, 7, 4, 6], backgroundColor: '#0f4c81', borderRadius: 3 }] },
+    options: {
+      indexAxis: 'y', plugins: { legend: { display: false } },
+      scales: { x: { grid: { color: '#eee' }, ticks: { precision: 0 } },
+                 y: { grid: { display: false }, ticks: { font: { size: 11 } } } }
+    }
+  });
+}
+</script>
+</body>
+</html>
