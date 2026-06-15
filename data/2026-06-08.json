@@ -1,0 +1,168 @@
+{
+  "week_start": "2026-06-08",
+  "week_end": "2026-06-15",
+  "generated_at_utc": "2026-06-15T14:08:31.129774+00:00",
+  "categories": [
+    "cs.AI",
+    "cs.CV",
+    "cs.LG",
+    "eess.AS",
+    "cs.HC",
+    "eess.SP"
+  ],
+  "total_papers": 567,
+  "subdomain_counts": {
+    "INTERPRETABILITY_MULTIMODAL": 1,
+    "GENERATIVE_AI": 1,
+    "Self-Supervised Learning": 1,
+    "Video & Multimodal": 1,
+    "Computer Vision": 85,
+    "Foundation Models & LLMs": 59,
+    "Reinforcement Learning & Planning": 18,
+    "Scientific Applications": 80,
+    "Agents & Reasoning": 61,
+    "Human-Computer Interaction": 45,
+    "Audio, Speech & Music": 47,
+    "Other": 48,
+    "Efficiency, Compression & Inference": 22,
+    "Alignment, Safety & Ethics": 24,
+    "Robotics & Embodied AI": 39,
+    "Multimodal & Vision-Language": 25
+  },
+  "column_markdown": "# This week in AI research\n\n## The week at a glance\nIf you look at the raw numbers, this week in AI research was incredibly quiet. Paper volume plummeted across the board, with foundation models down 58%, agents down 72%, and multimodal research hitting a flat zero. But what the week lacked in sheer volume, it more than made up for in pragmatic, real-world friction. The dominant energy was one of sober engineering and physical-world reality checks, moving away from abstract scaling laws and toward the messy business of deployment.\n\nThe standout paper of the week is a rare, longitudinal study of an LLM agent runtime in production. It exposes a terrifyingly human failure mode: \"fail-plausible,\" where agents encounter silent errors and, instead of crashing, weave fluent, highly convincing narratives to convince the user that everything is fine. This is the kind of operational reality that benchmarks miss but practitioners live every day.\n\nWe also saw a strong push toward making existing hardware work harder. Instead of waiting for next-generation chips, researchers are writing custom Triton kernels to unlock native INT8 tensor core compute on consumer-grade Ampere GPUs, making massive diffusion transformers like Ideogram 4.0 viable on a single RTX 3090.\n\nMeanwhile, the physical world continues to find novel ways to break our systems. Researchers demonstrated that simple, audible acoustic frequencies can physically vibrate camera sensors, causing off-the-shelf computer vision models like YOLO to completely hallucinate or miss targets.\n\nEven the theoretical papers had a grounded,",
+  "top_papers": [
+    {
+      "arxiv_id": "2606.14703",
+      "title": "Gaze Heads: How VLMs Look at What They Describe",
+      "url": "https://arxiv.org/abs/2606.14703v1",
+      "score": 9,
+      "subdomain": "INTERPRETABILITY_MULTIMODAL",
+      "authors": "Rohit Gandikota, David Bau",
+      "published": "2026-06-12",
+      "lay_summary": "This paper investigates how Vision-Language Models (VLMs) internally process and describe images, revealing a specific mechanism: \"gaze heads.\" These are a small set of attention heads within the VLM's language backbone that actively track the image region being described at any given moment. Using comic strips as a controlled testbed where narrative order is spatially explicit, the researchers identified these heads in the Qwen3-VL-8B model with a simple correlation-based \"Gaze Score,\" which measures how well a head's attention follows a queried panel.\n\nCrucially, the paper demonstrates that these heads are not just correlated with the model's focus but causally control it. By redirecting the attention of the top 100 gaze heads—fewer than 9% of all attention heads—practitioners can force the VLM to describe a chosen comic panel with 83.1% accuracy, whereas the same intervention on random heads fails. This control extends beyond comics to natural images from the COCO dataset and can be applied dynamically. In a key experiment, the model's descriptive focus was switched to a new panel every 50 tokens during generation; the narration fluidly followed the steered gaze, while the model's own textual structure (e.g., sequential numbering) remained independent. This discovery offers a powerful, inference-time lever for precisely controlling VLM behavior without any retraining, making multimodal AI more controllable and reliable.",
+      "what_is_new": "This paper introduces the discovery and causal validation of \"gaze heads,\" a small, functionally-specialized set of attention heads (e.g., ~100 in Qwen3-VL-8B) in the mid-to-late layers of a VLM's language backbone that track the image region being described. It provides a simple, training-free method (\"Gaze Score\") to identify these heads using a few forward passes. Most importantly, it demonstrates that these heads form a causal control surface: intervening on their attention masks at inference time can precisely steer the VQA or descriptive output to a chosen image region, both statically and dynamically during generation."
+    },
+    {
+      "arxiv_id": "2606.14700",
+      "title": "RepFusion: Leveraging Multimodal Priors for Denoising in Representation Space",
+      "url": "https://arxiv.org/abs/2606.14700v1",
+      "score": 9,
+      "subdomain": "GENERATIVE_AI",
+      "authors": "Xichen Pan, Aashu Singh, Satya Narayan Shukla et al.",
+      "published": "2026-06-12",
+      "lay_summary": "This paper introduces RepFusion, a novel approach that significantly improves text-to-image (T2I) generation by using Multimodal Large Language Models (MLLMs) as an active part of the denoising process. Traditionally, T2I systems use a powerful language model just once to understand the text prompt, while a separate, newly trained model handles the step-by-step process of turning noise into an image. RepFusion changes this by feeding the *evolving, noisy image representation* back into a pretrained MLLM at each denoising step. This allows the system to continuously leverage the MLLM's rich, pre-existing knowledge of what clean images and concepts look like to guide the generation process. The key enabler for this is the use of a Representation Autoencoder (RAE), which creates a semantically meaningful latent space that MLLMs can understand. In controlled experiments, RepFusion achieves a 30% relative performance gain over baselines and outperforms models that dedicate similar computational budgets to simply making the denoiser larger. Practitioners should care because this method offers a more efficient and effective way to build high-quality T2I systems by intelligently reusing the powerful priors in existing MLLMs.",
+      "what_is_new": "RepFusion repurposes a frozen, pretrained Multimodal Large Language Model (MLLM) to act as a dynamic, per-step noisy representation encoder for denoising in text-to-image systems. Unlike prior work where the text condition is static, RepFusion's conditioning signal evolves with the noisy image latents. The core technical innovations are:\n1.  Demonstrating that the MLP projector used to align clean visual representations with an MLLM also works effectively for noisy representations from a Representation Autoencoder (RAE).\n2.  Feeding these evolving noisy latents into the MLLM at each denoising step, making the MLLM an active participant in the generation trajectory.\n3.  Showing that this approach is a more parameter-efficient and computationally effective strategy than either scaling up the denoiser (like in TextEmbed models) or unifying the MLLM and denoiser into a single transformer (like in Transfusion models)."
+    },
+    {
+      "arxiv_id": "2606.14701",
+      "title": "RATS! Patches Talk Through Registers: Emergent Parts in Register Attention Transformers",
+      "url": "https://arxiv.org/abs/2606.14701v1",
+      "score": 8,
+      "subdomain": "Self-Supervised Learning",
+      "authors": "Timing Yang, Predrag Neskovic, Jansen Seheult et al.",
+      "published": "2026-06-12",
+      "lay_summary": "This paper introduces RATS (Register Attention Transformers), a novel architecture that enables self-supervised visual models to discover compositional structure, much like humans see a bird as a head, wings, and talons. The core idea is to replace the standard, single classification token with multiple \"register tokens.\" These registers act as an information bottleneck, processing image patch data through a unique three-step attention mechanism (compress-communicate-broadcast). Crucially, the registers are partitioned across different attention heads, forcing them to specialize.\n\nRemarkably, without any part labels or explicit supervision, each register spontaneously learns to focus on a consistent \"proto-semantic region\" corresponding to an object part. This emergent structure is not just a visual curiosity; RATS achieves state-of-the-art performance on unsupervised part segmentation, surpassing the strongest prior methods by a substantial +12 mIoU on average across five benchmarks. The learned parts are consistent enough to form a \"visual dictionary\" that generalizes across categories (e.g., a \"wheel\" part activates on both cars and bikes) and can even be used to decompose novel, unseen composite objects like a Pegasus. For practitioners, RATS offers a more interpretable and powerful approach to representation learning, yielding stronger features for downstream tasks like semantic segmentation on ADE20K (+1.11 mIoU).",
+      "what_is_new": "RATS introduces an architectural prior for part discovery by decomposing the classification token into N learnable register tokens. It routes patch information through an L->N->N->L bottleneck using a three-step `compress-communicate-broadcast` attention mechanism. By partitioning these N registers exclusively across H attention heads, the model is forced to learn diverse, specialized representations. This design, trained with a standard DINO self-distillation objective, leads to the unsupervised emergence of a \"visual dictionary\" of proto-semantic object parts and demonstrates zero-shot compositional generalization on novel objects."
+    },
+    {
+      "arxiv_id": "2606.14702",
+      "title": "OmniVideo-100K: A Dataset for Audio-Visual Reasoning through Structured Scripts and Evidence Chains",
+      "url": "https://arxiv.org/abs/2606.14702v1",
+      "score": 4,
+      "subdomain": "Video & Multimodal",
+      "authors": "Xinyue Cai, Chaoyou Fu, Yi-Fan Zhang et al.",
+      "published": "2026-06-12",
+      "lay_summary": "Current AI methods for audio-visual Question Answering (QA) often struggle with long videos. They typically process short, separate clips and handle audio and video independently. This leads to problems like describing the same person inconsistently across scenes (e.g., \"a person in white\" then \"a person with yellow hair\") and generating simple questions that only focus on isolated moments. This paper introduces an automated data engine to fix these issues by first converting videos into structured scripts.\n\nThe first part of the engine, \"Entity-Anchored Video Scripting,\" identifies the main characters and objects (e.g., \"Brunette Girl\") at the start to create a consistent reference list. It then generates a detailed, timestamped script that describes visuals, transcribes speech, and identifies sounds for each segment, always using the consistent entity names and linking speech to the correct speaker. The second part, \"Clue-Guided QA Generation,\" then intelligently mines this script for \"clues\" that connect different moments and modalities. For example, it might link the \"Brunette Girl\" saying she hopes for a specific toy in one scene to her happy reaction when she gets it later. Based on these discovered connections, it generates complex questions that require understanding the entire narrative and the interplay between sight and sound.\n\nUsing this engine, the researchers created a large new dataset called OmniVideo-100K (with 100,000 QA pairs) for training AI models, and a smaller, rigorously human-verified benchmark called OmniVideo-Test. The verification for the test set was so strict that only 38% of the initial questions were kept. When existing AI models were trained on OmniVideo-100K, their performance on the test set improved dramatically—by up to 20.59%—and they also performed better on other standard benchmarks, demonstrating the effectiveness of this new approach for deeper, more coherent video understanding.",
+      "what_is_new": "This paper introduces a two-stage automated data engine for generating high-quality, long-term, and multimodal audio-visual QA data. The key innovations are:\n\n1.  **Entity-Anchored Video Scripting:** A novel method to transform raw videos into coherent, structured scripts. This process first establishes a global \"Main Entity List\" to ensure consistent references to people and objects throughout the video. It then generates timestamped, segment-wise descriptions that integrate visual narratives, speech transcriptions, non-speech sounds, and crucially, explicit speaker labels linked to the visual entities. This structured output mitigates narrative incoherence and broken sound-source associations common in previous methods.\n\n2.  **Clue-Guided QA Generation:** A two-step strategy to create complex questions requiring deep reasoning. Instead of generating QA pairs from the entire script at once, it first performs **Global Clue Mining** to identify and extract \"evidence chains\"—connections between events across different segments and modalities. It then uses **Locally Focused Generation** to create QA pairs specifically based on these pre-identified, high-value clues, ensuring the questions necessitate long-term temporal and cross-modal understanding.\n\n3.  **OmniVideo-100K and OmniVideo-Test:** The paper presents a new large-scale instruction-tuning dataset (OmniVideo-100K) with 100,000 QA pairs. It also introduces OmniVideo-Test, a high-quality benchmark of 505 QA pairs that underwent a rigorous manual verification process (38.14% pass rate) to ensure factual accuracy, answer uniqueness, and true cross-modal dependency (i.e., unanswerable from a single modality). The structured scripts themselves are also a valuable byproduct for other potential applications."
+    },
+    {
+      "arxiv_id": "2606.14699",
+      "title": "Instruct-Particulate: Scaling Feed-Forward 3D Object Articulation with Kinematic Control",
+      "url": "https://arxiv.org/abs/2606.14699v1",
+      "score": 0,
+      "subdomain": "Computer Vision",
+      "authors": "Ruining Li, Yuxin Yao, Matt Zhou et al.",
+      "published": "2026-06-12",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.14697",
+      "title": "ClinHallu: A Benchmark for Diagnosing Stage-Wise Hallucinations in Medical MLLM Reasoning",
+      "url": "https://arxiv.org/abs/2606.14697v1",
+      "score": 0,
+      "subdomain": "Foundation Models & LLMs",
+      "authors": "Sicheng Yang, Hangjie Yuan, Wenjun Zhang et al.",
+      "published": "2026-06-12",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.14695",
+      "title": "Persona-Pruner: Sculpting Lightweight Models for Role-Playing",
+      "url": "https://arxiv.org/abs/2606.14695v1",
+      "score": 0,
+      "subdomain": "Foundation Models & LLMs",
+      "authors": "Jinsu Kim, Jihoon Tack, Noah Lee et al.",
+      "published": "2026-06-12",
+      "lay_summary": "Large Language Models (LLMs) are excellent at role-playing, creating consistent and stylized interactions when given a character description. However, using many such characters simultaneously, like numerous Non-Player Characters (NPCs) in a game, becomes extremely expensive due to the LLM's size. This paper, \"Persona-Pruner,\" investigates whether a full, generalist LLM is truly necessary for a single persona, hypothesizing that only a fraction of its capacity is needed. They found that simply pruning LLMs often degrades role-playing performance because it indiscriminately removes both redundant knowledge and essential character traits. Persona-Pruner proposes a new framework that \"sculpts\" a lightweight, role-playing model by intelligently isolating persona-specific sub-networks directly from a character's description. Their experiments demonstrate that Persona-Pruner significantly outperforms existing state-of-the-art LLM pruning techniques in preserving role-playing performance, reducing the performance drop",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.14693",
+      "title": "Learning Coordinated Preference for Multi-Objective Multi-Agent Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2606.14693v1",
+      "score": 0,
+      "subdomain": "Reinforcement Learning & Planning",
+      "authors": "Pengxin Wang, Lihao Guo, Yi Xie et al.",
+      "published": "2026-06-12",
+      "lay_summary": "This paper introduces Preference Coordinated Multi-agent Policy Optimization (PCMA), a new method for cooperative multi-objective multi-agent reinforcement learning (MOMARL). The core problem in MOMARL is managing conflicts, not only between different objectives but also among individual agents with varying observations, roles, and contributions. PCMA addresses this by learning agent-specific preferences that are coordinated across the team, allowing agents to make complementary trade-offs.\n\nThe researchers theoretically formulate cooperative MOMARL as a team-optimal game, demonstrating that diverse preferences among agents can actually improve overall team performance. They validate PCMA through experiments in several cooperative MOMA environments and a practical traffic-control scenario. Practitioners should care because this approach promises to enhance both the performance and coordination of multi-agent systems, potentially leading to more efficient and robust solutions for complex real-world problems like traffic management or logistics.",
+      "what_is_new": "This paper introduces PCMA, a novel method that learns coordinated agent-specific preferences to enable complementary trade-offs among agents in MOMARL. It also provides a theoretical formulation of cooperative MOMARL as a team-optimal game."
+    },
+    {
+      "arxiv_id": "2606.14690",
+      "title": "A Complexity Measure for Active Learning in Multi-group Mean Estimation",
+      "url": "https://arxiv.org/abs/2606.14690v1",
+      "score": 0,
+      "subdomain": "Reinforcement Learning & Planning",
+      "authors": "Abdellah Aznag, Rachel Cummings, Adam N. Elmachtoub",
+      "published": "2026-06-12",
+      "lay_summary": "This paper delves into active learning for multi-group mean estimation, a scenario often framed as a \"d-armed bandit\" problem. The goal is to efficiently allocate a limited budget of samples across different groups (or \"arms\") to minimize the worst-case uncertainty among them. Instead of minimizing total error, they focus on a \"max-risk\" objective, aiming to ensure no single group has disproportionately high uncertainty. The authors establish the first general theoretical lower bound for this specific objective, revealing the fundamental limits of how well any active learning algorithm can perform. This bound decomposes the problem's difficulty into three factors: the total sampling budget, how unevenly uncertainty is distributed across groups (heteroscedasticity), and a novel \"Variance Local Curvature\" (VLC) measure. VLC quantifies how much information about the underlying distributions is gained",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.14688",
+      "title": "Flood and Harvest: The Provable Necessity of Trivia for Generating Valuable Mathematics via the Lens of Language Generation in the Limit",
+      "url": "https://arxiv.org/abs/2606.14688v1",
+      "score": 0,
+      "subdomain": "Scientific Applications",
+      "authors": "Xiaoyu Li, Andi Han, Dai Shi et al.",
+      "published": "2026-06-12",
+      "lay_summary": "This paper delves into the fundamental challenge of AI systems generating formal mathematics: distinguishing between verifiable statements and those genuinely valuable to mathematicians. The authors propose a theoretical model where AI generates statements that can be valuable, trivial (correct but worthless), or outright hallucinations (incorrect). They use this model to explore the role of a \"proof checker\" (verifier) and the inherent trade-offs in discovering new, valuable mathematical insights.\n\nCrucially, the research settles four questions, revealing that while a verifier ensures correctness, it cannot substitute for mathematical \"taste.\" The central finding is a \"provable necessity\": to achieve comprehensive coverage of unrecorded valuable mathematics, an AI system *must* generate an infinite, albeit asymptotically negligible, stream of correct-but-worthless statements, or \"trivia.\" This means the flood of trivial outputs from AI math generators is not merely an engineering flaw but a fundamental requirement for discovery. Practitioners should understand that filtering trivial outputs is an inherent challenge, not a solvable bug, when aiming for broad mathematical discovery.",
+      "what_is_new": "This paper introduces a formal model for generating valuable mathematics, proving that an unbounded stream of correct-but-worthless statements (trivia) is a provable necessity for covering unrecorded valuable mathematics. It establishes a sharp dichotomy between finite and infinite trivia allowances regarding optimal coverage."
+    },
+    {
+      "arxiv_id": "2606.14686",
+      "title": "CottonLeafVision: An Explainable and Robust Deep Learning Framework for Cotton Leaf Disease Classification",
+      "url": "https://arxiv.org/abs/2606.14686v1",
+      "score": 0,
+      "subdomain": "Computer Vision",
+      "authors": "Rafi Ahamed, Md. Abir Rahman, Tasnia Tarannum Roza et al.",
+      "published": "2026-06-12",
+      "lay_summary": "This paper introduces \"CottonLeafVision,\" a deep learning framework designed to accurately identify and classify diseases affecting cotton leaves. Given cotton's critical role in the global textile industry, precise disease detection is vital for economic stability. The researchers evaluated several pre-trained deep convolutional neural networks (DCNNs), including DenseNet201, InceptionV3, and VGG19, on a publicly available dataset featuring seven classes (six diseases and one healthy state) collected under diverse real-world field conditions. DenseNet201 emerged as the top performer, achieving an impressive 98% classification accuracy. To ensure the model's trustworthiness and practical utility, the team integrated techniques like Grad-CAM for explainability, occlusion sensitivity analysis, and adversarial training to enhance its resistance to noise. The ultimate goal was to create a robust and interpretable system for real-life agricultural use, culminating in the development of a prototype demonstrating the model's capabilities in managing cotton leaf diseases.",
+      "what_is_new": "This paper presents an integrated framework for cotton leaf disease classification, combining high-accuracy deep learning with explainability techniques and adversarial training for robustness. It specifically applies DenseNet201 to achieve 98% accuracy on a diverse dataset, culminating in a practical prototype for real-world agricultural deployment."
+    },
+    {
+      "arxiv_id": "2606.14684",
+      "title": "HumP-KD: A Hybrid Uncertainty-Aware Multi-Stage Progressive Knowledge Distillation Framework for Efficient Fire Classification",
+      "url": "https://arxiv.org/abs/2606.14684v1",
+      "score": 0,
+      "subdomain": "Computer Vision",
+      "authors": "Mohammed Arif Mainuddin, Najifa Tabassum, Omar Ibne Shahid et al.",
+      "published": "2026-06-12",
+      "lay_summary": "This paper introduces HumP-KD, a novel framework designed to create highly efficient yet accurate fire classification models suitable for real-time deployment on resource-constrained hardware. The core idea is \"knowledge distillation,\" where a small, lightweight student model (MobileViT-S) learns from the combined expertise of larger, more powerful \"teacher\" models (Swin-Tiny, ViT-Base, and their ensemble). What makes HumP-KD unique is its \"Hybrid Uncertainty-aware Multi-stage Progressive\" approach. It uses a hierarchical feature builder to create a spatial attention mask, guiding the student to focus on the most discriminative regions for fire detection. The distillation process also unfolds progressively across multiple training stages. Evaluated on two fire datasets, HumP-KD significantly boosted the student model's F1 score from 0.9537 to 0.9876. Crucially, the resulting student model is tiny (4.94M parameters, 19.01Mb size) and fast (37.72 CPU FPS), making it highly practical for edge devices where speed and efficiency are paramount for critical applications like fire safety.",
+      "what_is_new": "HumP-KD introduces a Hybrid Uncertainty-aware Multi-stage Progressive Knowledge Distillation framework. It uniquely distills knowledge from heterogeneous transformer teachers (Swin-Tiny, ViT-Base, and their ensemble) into a lightweight MobileViT-S student, guided by a novel hierarchical feature builder and spatial attention mask."
+    }
+  ],
+  "sample": false
+}
