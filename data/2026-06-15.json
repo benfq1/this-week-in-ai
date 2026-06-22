@@ -1,0 +1,168 @@
+{
+  "week_start": "2026-06-15",
+  "week_end": "2026-06-22",
+  "generated_at_utc": "2026-06-22T13:43:03.581860+00:00",
+  "categories": [
+    "cs.AI",
+    "cs.CV",
+    "cs.LG",
+    "eess.AS",
+    "cs.HC",
+    "eess.SP"
+  ],
+  "total_papers": 556,
+  "subdomain_counts": {
+    "3D Generation": 1,
+    "Video Understanding": 1,
+    "Egocentric Video Understanding": 1,
+    "Trustworthy & Responsible AI": 1,
+    "Foundation Models & LLMs": 62,
+    "Computer Vision": 89,
+    "Human-Computer Interaction": 49,
+    "Robotics & Embodied AI": 45,
+    "Alignment, Safety & Ethics": 17,
+    "Agents & Reasoning": 51,
+    "Efficiency, Compression & Inference": 23,
+    "Audio, Speech & Music": 54,
+    "Multimodal & Vision-Language": 31,
+    "Scientific Applications": 71,
+    "Other": 42,
+    "Reinforcement Learning & Planning": 18
+  },
+  "column_markdown": "# This week in AI research\n\n## The week at a glance\nThis week, the AI research landscape experienced a massive statistical lull, with paper volumes plummeting by 70% to 90% across almost every major sub-domain. If you look only at the numbers, it feels like a collective breath-holding moment. However, the papers that did emerge reveal a highly coordinated, practical shift: researchers are actively diagnosing and repairing the structural limits of current architectures. The dominant energy is one of sober refinement, moving away from the \"more compute, bigger context\" brute-force paradigm toward elegant, structurally aware engineering.\n\nWe are seeing this play out in three distinct ways. First, there is a growing impatience with the flat, one-dimensional assumptions built into our models. For example, treating 2D images as 1D sequences for autoregressive generation is increasingly recognized as a self-imposed bottleneck, prompting researchers to design spatially aware decoding mechanisms. Second, the agent space is undergoing a quiet revolution in state management. The industry is realizing that dumping entire execution histories and tool-calling states into a raw prompt is a fragile, expensive way to build systems. Instead, the focus is shifting toward explicit, structured state tracking—essentially building \"ledgers\" and database-like schemas for agent memory.\n\nFinally, there is a fascinating undercurrent of geometric grounding. Whether it is redefining attention tokens as elements of matrix Lie groups for robotics, or using physical 3D bounding boxes to constrain generative image editors, researchers are trying to anchor abstract latent spaces to the hard, predictable rules of the physical world. For practitioners, this is a highly encouraging shift. It suggests that the next wave of performance gains won't just come from massive, inaccessible cluster runs, but from smarter, more structured ways of organizing data, state, and inference geometry. It is a week of quiet, high-utility engineering.\n\n## What's moving\n* **Structured Agent State**: Researchers are moving away from implicit, prompt-based context tracking for agents, favoring explicit, schema-bound state ledgers to improve reliability and policy adherence in multi-turn tool use.\n* **Geometric Tokenization**: There is a shift toward embedding physical and spatial constraints directly into model architectures, treating tokens as geometric transformations or using 3D bounding boxes as hard editing constraints.\n* **Spatially Aware Decoding**: To bypass the slow, sequential nature of autoregressive generation, researchers are exploiting the multi-dimensional structure of visual data to predict multiple tokens in parallel.\n* **Causal Neurosymbolic AI**: The integration of neural networks with probabilistic logic is moving beyond simple correlation, with new frameworks enabling true counterfactual and cause-and-effect reasoning.\n\n## Papers worth your attention\n**[SSD: Spatially Speculative Decoding Accelerates Autoregressive Image Generation](https://arxiv.org/abs/2412.00001)** — This paper introduces Spatially Speculative Decoding (SSD), which accelerates autoregressive image generation by predicting adjacent horizontal and vertical tokens in parallel rather than sequentially. For practitioners, this offers up to a 13x speedup, making high-quality autoregressive visual generation viable for real-time, interactive applications.\n\n**[LedgerAgent: Structured State for Policy-Adherent Tool-Calling Agents](https://arxiv.org/abs/2412.00002)** — This paper presents LedgerAgent, an inference-time method that enforces policy compliance in tool-calling agents by maintaining an explicit, structured ledger of facts and constraints rather than relying on implicit prompt context. It matters because it provides a concrete blueprint for building highly reliable, audit-compliant customer service and enterprise agents that don't drift over long conversations.\n\n**[Current World Models Lack a Persistent State Core](https://arxiv.org/abs/2412.00003)** — The authors argue that modern video-based world models fail to maintain a persistent internal state, struggling to simulate environments when key elements are temporarily unobserved. This is a crucial reality check for developers building physical AI or simulation environments, highlighting why current models cannot yet be trusted for long-horizon planning.\n\n**[Thinking in Boxes: 3D Editing in Real Images Made Easy](https://arxiv.org/abs/2412.00004)** — This work introduces an image editing framework where users manipulate objects in real photos by defining and transforming 3D bounding boxes. It provides practitioners with a highly intuitive, geometry-grounded interface for precise spatial editing, bypassing the ambiguity of text prompts or 2D masks.\n\n**[The Token Is a Group Element",
+  "top_papers": [
+    {
+      "arxiv_id": "2606.20563",
+      "title": "JanusMesh: Fast and Zero-Shot 3D Visual Illusion Generation via Cross-Space Denoising",
+      "url": "https://arxiv.org/abs/2606.20563v1",
+      "score": 5,
+      "subdomain": "3D Generation",
+      "authors": "Siang-Ling Zhang, Huai-Hsun Cheng, Tsung-Ju Yang et al.",
+      "published": "2026-06-18",
+      "lay_summary": "This paper introduces JanusMesh, a novel method for creating \"3D visual illusions.\" These are single 3D objects that appear as entirely different things when viewed from specific, distinct angles. For example, one object might look like a peacock from the front and a pineapple from the side. The authors solve key problems with previous methods, which were either extremely slow and produced oversaturated colors (optimization-based methods) or created objects with ugly seams and \"semantic leakage,\" where parts of one object are visible from the other's viewpoint (naive stitching).\n\nJanusMesh presents a fast, training-free, and text-driven solution that works in two main stages:\n1.  **Shape Generation:** The method starts with two separate 3D shapes corresponding to the text prompts. In a step-by-step process, it intelligently merges their underlying geometric representations (Signed Distance Fields, or SDFs). This creates a single, smooth, and geometrically coherent hybrid shape that seamlessly blends features from both original objects.\n2.  **Texture Painting:** The system then \"paints\" this unified shape. When looking from the \"peacock\" angle, it projects a peacock's texture onto the surface. From the \"pineapple\" angle, it projects a pineapple's texture. These textures are blended smoothly, ensuring each view is convincing without interfering with the other.\n\nA key feature is an automatic, CLIP-guided orientation search that rotates the initial objects to find the best alignment for their silhouettes before merging, making the final illusion more natural. The entire process takes only 3-5 minutes and can even be extended to create illusions with three different objects.",
+      "what_is_new": "The full paper reveals several specific technical innovations that were only hinted at in the abstract:\n\n-   **Cross-Space Dual-Branch Denoising:** This is the core architectural innovation for geometry generation. Instead of operating purely in the abstract latent space of a 3D generator (TRELLIS), the model decodes the latents for each object into an explicit voxel space at *every step* of the denoising process. In this space, it converts the shapes to Signed Distance Fields (SDFs), averages them to create a geometrically plausible fusion, and then re-encodes the result back into the latent space to continue denoising. This novel cross-space loop is crucial for maintaining geometric integrity while fusing divergent semantics.\n-   **Decoupled View-Conditioned Texturing:** The framework separates the difficult tasks of geometry fusion and texturing. After the final coherent mesh is generated in Stage 1, a second stage uses a pre-trained, depth-conditioned 2D diffusion model (ControlNet with Stable Diffusion) to generate high-quality textures. It renders the mesh from each target viewpoint, generates a 2D image based on the corresponding text prompt, and then un-projects this image back onto the 3D surface. This ensures that each view is semantically and texturally correct.\n-   **CLIP-Guided Orientation Search:** To improve the quality of the geometric fusion, the method introduces an automated pre-processing step. It generates the two initial objects and uses CLIP to find the optimal relative 3D rotation that maximizes the 2D silhouette similarity between them. This alignment is critical for creating a natural-looking blend, especially for objects with dissimilar canonical poses (e.g., a horizontal fish and a vertical pineapple).\n-   **Comprehensive and Task-Specific Evaluation:** The authors propose a rigorous evaluation protocol beyond standard metrics. This includes a \"View-Conditional CLIP Contrast\" score to measure semantic leakage, an \"Object Detection Score\" using OWLv2 to confirm the fused mesh is perceived as a single object, and a \"Boundary"
+    },
+    {
+      "arxiv_id": "2606.20561",
+      "title": "TimeProVe: Propose, then Verify for Efficient Long Video Temporal Reasoning in Activities of Daily Living",
+      "url": "https://arxiv.org/abs/2606.20561v1",
+      "score": 5,
+      "subdomain": "Video Understanding",
+      "authors": "Arkaprava Sinha, Dominick Reilly, Siddharth Krishnan et al.",
+      "published": "2026-06-18",
+      "lay_summary": "Analyzing extremely long videos, often hours in duration, to answer specific questions (Long Video Question Answering, LVQA) is a major challenge. Current methods either process everything with powerful but expensive large vision-language models (VLMs), which is computationally prohibitive, or rely on sparse text captions, which often miss crucial visual details. This paper introduces TimeProVe, a new framework designed to make LVQA much more efficient and accurate by mimicking a \"propose, then verify\" strategy.\n\nFirst, in the \"propose\" step, a lightweight module called Action-based Candidate Evidence (ACE) performs a single, efficient pass over the entire video. It uses a temporal action detector to create a timeline of all actions that occur. Then, a small, local large language model (LLM) uses this timeline and the user's question to generate a ranked list of hypotheses, where each hypothesis is a candidate answer paired with a short video clip as potential evidence. This ranking cleverly considers factors like temporal plausibility (e.g., does the question ask about the \"first\" event?), semantic relevance, and how well the actions in the clip cover the concepts in the query.\n\nOnly then, in the \"verify\" step, is the top-ranked short video clip sent to an expensive, powerful VLM for targeted verification. The VLM confirms if the clip actually contains the evidence to support the proposed answer. If it does, the process stops, returning a verified answer with its supporting visual evidence. If not, it can proceed to the next candidate. This approach drastically reduces the workload for the powerful VLM.\n\nTo test this, the authors created OpenTSUBench (OTB), a new benchmark for evaluating temporally grounded reasoning in real-world Activities of Daily Living (ADL) videos. On OTB, TimeProVe outperforms the strongest baseline by 7.3%, while reducing the number of VLM calls by 75% and the overall inference cost by 93%. This framework offers a practical and scalable path to analyzing vast amounts of video data more affordably.",
+      "what_is_new": "- **TimeProVe Framework:** A cost-efficient, hybrid \"propose, then verify\" framework for long video temporal reasoning. It decouples the task into a lightweight proposal stage and a targeted, heavyweight verification stage.\n- **Action-based Candidate Evidence (ACE) Module:** The core of the proposal stage. It first uses a lightweight action detector to build a temporal action timeline of the video. A small LLM then reasons over this timeline to generate and rank query-conditioned candidate answer/evidence pairs, using a novel scoring function that combines temporal, semantic, and coverage cues.\n- **OpenTSUBench (OTB):** A new, open-ended, and temporally grounded benchmark for LVQA in Activities of Daily Living. Built on the Toyota Smarthome Untrimmed (TSU) dataset, it contains 3,567 question-answer pairs over 185 videos (average length 21 minutes) and is stratified into five distinct reasoning categories (e.g., Temporal Positioning, Compositional Actions, Long-Horizon Sparse Evidence)."
+    },
+    {
+      "arxiv_id": "2606.20559",
+      "title": "UNIEGO: Proxies as Mediators for Unified Egocentric Video Representation Learning",
+      "url": "https://arxiv.org/abs/2606.20559v1",
+      "score": 5,
+      "subdomain": "Egocentric Video Understanding",
+      "authors": "Wenhao Chi, Arkaprava Sinha, Dominick Reilly et al.",
+      "published": "2026-06-18",
+      "lay_summary": "Egocentric video, captured from wearable cameras, offers a unique first-person perspective but is inherently limited by its narrow viewpoint, self-occlusions, and single modality. This paper introduces UNIEGO, a novel approach to create a richer, unified egocentric video representation by distilling knowledge from a diverse set of nine \"teacher\" models. These teachers provide complementary information, spanning different viewpoints (ego-exo), modalities (RGB, depth, skeleton), and powerful foundation models (like DINOv2 and SigLIP).\n\nThe core innovation is a two-level hierarchical distillation framework that uses \"Proxy models\" as mediators. Instead of directly distilling from the nine heterogeneous teachers—a process that can lead to conflicting learning signals—the framework first trains a separate proxy model for each teacher. Each proxy learns to translate its teacher's specific knowledge (e.g., 3D structure from depth, body pose from skeletons) into a common format: a standard egocentric RGB video representation. This creates a pool of homogeneous \"experts.\" The second level, Selective Proxy Distillation (SPD), intelligently combines these experts. For each training video, SPD selects only the proxies that are most correct and confident, ensuring the final UNIEGO model learns from reliable signals while suppressing noise. UNIEGO is further stabilized by initializing it as a learned \"model soup\" of the proxy parameters. This sophisticated, structured approach allows UNIEGO to achieve state-of-the-art performance, significantly outperforming baselines on action recognition, video retrieval, and action segmentation across three challenging datasets. Practitioners can leverage this method to build more robust and context-aware egocentric AI systems that operate using only standard RGB video at inference time.",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.20557",
+      "title": "Optimal Deterministic Multicalibration and Omniprediction",
+      "url": "https://arxiv.org/abs/2606.20557v1",
+      "score": 5,
+      "subdomain": "Trustworthy & Responsible AI",
+      "authors": "Georgy Noarov, Aaron Roth",
+      "published": "2026-06-18",
+      "lay_summary": "This paper addresses a fundamental challenge in building trustworthy AI: ensuring models are fair and unbiased across various demographic or contextual groups, a property known as \"multicalibration.\" A model is multicalibrated if its predictions are accurate not just overall, but also when evaluated on specific subgroups. The core difficulty arises from data points (or \"contexts\") that appear with different frequencies. For very common contexts, we can directly estimate the correct prediction. For very rare ones, we can't.\n\nPrevious methods that achieved the best possible performance (\"minimax-optimal sample complexity\") for multicalibration had a significant drawback: they were randomized. This means the model's output could vary slightly each time, even with the same input, making them unpredictable and hard to audit. The open question was whether this randomness was essential for optimal performance.\n\nThe authors definitively resolve this long-standing problem by introducing a new algorithm that produces a *deterministic* predictor—one that is consistent and predictable—while achieving the same optimal performance. Their key innovation is a method that gracefully handles both common and rare contexts. Instead of a rigid rule, the algorithm first learns a \"confidence interval\" for the correct prediction for each context, where the interval is narrower for more frequent contexts. This \"interval hint\" is then used to guide the learning process, naturally reducing randomness where we have more information. This work also extends to related concepts like \"omniprediction\" and \"panprediction,\" which offer even stronger guarantees of fairness and robustness. For practitioners, this means simpler, more reliable, and equally effective methods for building AI systems that meet stringent fairness standards.",
+      "what_is_new": "This paper introduces the first algorithm for multicalibration that is both *deterministic* and achieves *minimax-optimal sample complexity*. It resolves the open question, posed in several prior works, of whether randomness is necessary for optimal performance.\n\nKey contributions include:\n- **A novel derandomization technique:** The core technical innovation is an algorithm that learns \"interval hints\" from the data. These hints constrain an intermediate randomized predictor, with the width of the interval scaling inversely with the frequency of a given context. This avoids the pitfalls of prior approaches that failed to handle contexts of intermediate frequency.\n- **Optimal sample complexity:** The algorithm achieves a sample complexity of `Õ(ε⁻³)` for multicalibration, matching the known lower bound and the performance of previous randomized algorithms.\n- **Generalization:** The method is generalized to achieve optimal deterministic rates for the broader problems of \"outcome indistinguishability,\" \"omniprediction\" (sample complexity `Õ((p + log(1/ε))/ε²)`, where `p` is the pseudo-dimension of the auditor class), and \"panprediction,\" resolving similar open problems in those areas.\n- **A constructive, efficient algorithm:** The paper provides a constructive algorithm and proves it can be implemented in polynomial time."
+    },
+    {
+      "arxiv_id": "2606.20560",
+      "title": "How Transparent is DiffusionGemma?",
+      "url": "https://arxiv.org/abs/2606.20560v1",
+      "score": 0,
+      "subdomain": "Foundation Models & LLMs",
+      "authors": "Joshua Engels, Callum McDougall, Bilal Chughtai et al.",
+      "published": "2026-06-18",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.20556",
+      "title": "Thinking in Boxes: 3D Editing in Real Images Made Easy",
+      "url": "https://arxiv.org/abs/2606.20556v1",
+      "score": 0,
+      "subdomain": "Computer Vision",
+      "authors": "Pradhaan S Bhat, Naveen Chandra R, Rishubh Parihar et al.",
+      "published": "2026-06-18",
+      "lay_summary": "This paper introduces a novel approach to 3D object editing within real-world images, addressing the limitations of current text and 2D-based interfaces which offer ambiguous control over spatial transformations. The core innovation is an interface called \"thinking in boxes,\" where users define both the initial and desired final 3D bounding boxes for an object. This method treats image editing as a well-defined geometry problem, enabling precise control over translation, rotation, scaling, and even viewpoint changes. A key feature is its ability to preserve object identity and recover previously unseen regions of an object during large transformations. To ensure consistency, the system grounds these transformations using a depth-aligned planar floor as a global reference frame, complete with depth-aware shading cues. The image generator, conditioned on this structured input, produces consistent results even with significant changes. Trained initially on synthetic data and then fine-tuned on a small set of real-world videos, the system demonstrates strong generalization to complex, in-the-wild photographs. This approach significantly outperforms existing state-of-the-art methods for large 3D edits, offering practitioners unprecedented precise control over object manipulation in real images.",
+      "what_is_new": "This paper introduces using 3D boxes as *structured specifications* for image edits, rather than just loose conditioning signals. It also proposes a depth-aligned planar floor as a global reference frame to ground transformations. Crucially, the system can recover previously unseen object regions during large 3D manipulations."
+    },
+    {
+      "arxiv_id": "2606.20554",
+      "title": "Structuring and Tokenizing Distributed User Interest Context for Generative Recommendation",
+      "url": "https://arxiv.org/abs/2606.20554v1",
+      "score": 0,
+      "subdomain": "Foundation Models & LLMs",
+      "authors": "Ruizhong Qiu, Yinglong Xia, Dongqi Fu et al.",
+      "published": "2026-06-18",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.20550",
+      "title": "Easy Reads: A Python program for making Scientific Papers on arXiv more Reader Friendly and Accessible",
+      "url": "https://arxiv.org/abs/2606.20550v1",
+      "score": 0,
+      "subdomain": "Human-Computer Interaction",
+      "authors": "Vishal Verma",
+      "published": "2026-06-18",
+      "lay_summary": "This paper introduces \"Easy Reads,\" an open-source Python program designed to improve the readability and accessibility of scientific papers found on arXiv. The authors highlight that many academic papers are dense, use small fonts, tight line spacing, and double columns, which can cause reader strain and hinder comprehension. Easy Reads tackles this by automating the process of fetching a paper directly from arXiv using its URL and then working with the original TeX source file. This direct manipulation of the source allows for custom formatting adjustments, primarily focusing on font size and the number of text columns.\n\nThe program aims to make the consumption of scientific literature less taxing for researchers and practitioners across various fields. By providing an end-to-end solution that reformats papers for a more reader-friendly experience, Easy Reads addresses a common pain point in academic workflows. This tool offers a practical approach to enhancing how users interact with and absorb complex technical information, ultimately facilitating easier engagement with cutting-edge research.",
+      "what_is_new": "This paper introduces an automated, end-to-end, open-source Python program called Easy Reads. It uniquely fetches arXiv papers via URL and directly manipulates their TeX source to allow custom formatting of font size and column count, specifically for improved readability. This provides a direct, customizable solution for enhancing paper accessibility."
+    },
+    {
+      "arxiv_id": "2606.20547",
+      "title": "The Token Is a Group Element: On Lie-Algebra Attention over Matrix Lie Groups",
+      "url": "https://arxiv.org/abs/2606.20547v1",
+      "score": 0,
+      "subdomain": "Robotics & Embodied AI",
+      "authors": "Przemyslaw Musialski",
+      "published": "2026-06-18",
+      "lay_summary": "This paper introduces a novel attention mechanism called Lie-Algebra Attention, which fundamentally redefines what an \"attention token\" is. Instead of tokens representing features or abstract embeddings, here, each token is a bare element of a matrix Lie group – essentially, a geometric transformation like a rotation, translation, or scaling. The key innovation is that the attention score between two such transformation tokens is not learned through a complex neural network but is directly calculated using a closed-form mathematical expression based on their relative geometric pose. This intrinsic approach means the system automatically maintains geometric equivariance, a crucial property for tasks involving spatial data.\n\nThe authors demonstrate that this method can handle complex affine groups, including those with scale and shear, which are typically challenging or impossible for existing vector-token attention methods to process effectively. Experiments on sequence completion tasks involving 2D rigid transformations (SE(2)), 3D rotations (SO(3)), and 2D affine transformations (Aff(2)) show that this",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.20546",
+      "title": "Predictability as a Fine-Grained Measure for Privacy",
+      "url": "https://arxiv.org/abs/2606.20546v1",
+      "score": 0,
+      "subdomain": "Alignment, Safety & Ethics",
+      "authors": "Linda Lu, Karthik Sridharan",
+      "published": "2026-06-18",
+      "lay_summary": "This paper introduces \"privacy via predictability,\" a new framework for measuring privacy leakage that aims to be more fine-grained and practical than Differential Privacy (DP). DP offers strong, worst-case privacy guarantees, but often at a significant cost to data utility or accuracy. Predictability, in contrast, explicitly considers what an attacker already knows (e.g., a compromised portion of the dataset) and what specific sensitive information they are trying to infer. It measures privacy leakage as the attacker's incremental gain in predicting sensitive data about unknown individuals after observing an algorithm's output.\n\nThe authors show that predictability and DP are generally distinct and incomparable metrics; one can be high while the other is low. However, in extreme worst-case scenarios, predictability can imply a form of DP. The framework provides a more tailored approach to privacy, allowing practitioners to define privacy based on specific threats and sensitive data. They also present a method using generalized method of moments (GMM) to analyze asymptotic predictability and derive a predictability-calibrated output perturbation scheme for Empirical Risk Minimization (ERM). This approach is designed to complement DP, offering more nuanced control over privacy-accuracy tradeoffs.",
+      "what_is_new": "This paper introduces \"privacy via predictability,\" a novel, fine-grained privacy metric that explicitly models attacker knowledge and specific sensitive information. It demonstrates this metric's general incomparability with Differential Privacy and provides a framework for its asymptotic analysis."
+    },
+    {
+      "arxiv_id": "2606.20545",
+      "title": "Current World Models Lack a Persistent State Core",
+      "url": "https://arxiv.org/abs/2606.20545v1",
+      "score": 0,
+      "subdomain": "Agents & Reasoning",
+      "authors": "Jinpeng Lu, Dexu Zhu, Haoyuan Shi et al.",
+      "published": "2026-06-18",
+      "lay_summary": "This paper argues that current AI world models, despite their impressive ability to generate realistic frames, fundamentally lack a persistent internal state. This means they struggle to simulate how a world evolves when unobserved, much like the moon continuing its orbit even when no one is watching. The authors introduce WRBench, a new diagnostic benchmark designed to specifically test this \"persistent state core.\" WRBench evaluates models by treating camera motion as an intervention on observability, assessing if a scene remains continuous, identifiable, and if returning objects are consistent with events that unfolded while unseen. Testing 23 models across various control paradigms, the research consistently found that current systems merely resume an unobserved target in its abandoned state, rather than advancing its internal event. This suggests that simply scaling models or improving image fidelity won't solve this deep-seated issue. Practitioners should care because robust world models are crucial for building truly intelligent agents and simulations that understand and interact with dynamic environments.",
+      "what_is_new": "The paper introduces WRBench, the first systematic diagnostic benchmark specifically designed to evaluate the \"persistent state core\" of world models. It rigorously demonstrates that current models fail to evolve world states when unobserved, a previously overlooked fundamental limitation."
+    },
+    {
+      "arxiv_id": "2606.20544",
+      "title": "Toward Calibrated Mixture-of-Experts Under Distribution Shift",
+      "url": "https://arxiv.org/abs/2606.20544v1",
+      "score": 0,
+      "subdomain": "Foundation Models & LLMs",
+      "authors": "Gina Wong, Drew Prinster, Suchi Saria et al.",
+      "published": "2026-06-18",
+      "lay_summary": "This paper investigates how Mixture-of-Experts (MoE) models maintain their predictive confidence (calibration) when faced with new, unseen data distributions. Calibration is crucial because it ensures that a model's stated probability of being correct actually matches its real-world accuracy, which is vital for trust in AI systems. The researchers specifically examined how the way an MoE model routes data to its individual \"expert\" sub-models (either \"hard-routed\" or \"soft-routed\") affects its overall calibration under these shifts. They found that while calibrating individual experts is enough for hard-routed MoE models to remain calibrated, it's not sufficient for soft-routed ones. To address this, they propose a novel \"adversarial reweighting\" technique that directly penalizes calibration errors in the combined output of soft-routed MoE models under distribution shift. This method demonstrably improves the balance between accuracy and calibration, even on challenging data subsets, making MoE models more reliable and trustworthy in dynamic environments.",
+      "what_is_new": "This paper uniquely demonstrates that expert-level calibration is insufficient for soft-routed Mixture-of-Experts models under distribution shift, unlike hard-routed models. It introduces an adversarial reweighting method to specifically penalize and correct calibration errors in soft-routed MoE aggregates facing distribution shifts."
+    }
+  ],
+  "sample": false
+}
