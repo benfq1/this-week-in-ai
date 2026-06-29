@@ -1,0 +1,168 @@
+{
+  "week_start": "2026-06-22",
+  "week_end": "2026-06-29",
+  "generated_at_utc": "2026-06-29T12:28:07.426784+00:00",
+  "categories": [
+    "cs.AI",
+    "cs.CV",
+    "cs.LG",
+    "eess.AS",
+    "cs.HC",
+    "eess.SP"
+  ],
+  "total_papers": 540,
+  "subdomain_counts": {
+    "THEORY": 1,
+    "DEXTEROUS_MANIPULATION": 1,
+    "3D Gaussian Splatting": 1,
+    "EVALUATION": 1,
+    "Agents & Reasoning": 38,
+    "Scientific Applications": 81,
+    "Foundation Models & LLMs": 60,
+    "Alignment, Safety & Ethics": 25,
+    "Reinforcement Learning & Planning": 12,
+    "Computer Vision": 86,
+    "Multimodal & Vision-Language": 25,
+    "Audio, Speech & Music": 56,
+    "Human-Computer Interaction": 68,
+    "Robotics & Embodied AI": 33,
+    "Efficiency, Compression & Inference": 17,
+    "Other": 35
+  },
+  "column_markdown": "# This week in AI research\n\n## The week at a glance\nIf you judge the state of AI research by sheer volume, this week was an absolute ghost town. Across almost every major sub-domain, paper output plummeted by 75% to 95% compared to the rolling four-week average. Multimodal and vision-language research virtually vanished, and robotics slowed to a crawl. But this dramatic seasonal or cyclical lull actually provides a welcome moment of clarity. Stripped of the usual noise of incremental model releases and benchmark-chasing, a distinct and highly practical theme emerges: researchers are shifting their focus from training-time brute force to test-time control, adaptation, and systemic integration.\n\nInstead of trying to train the perfect, all-knowing model from scratch, the papers that did land this week are obsessed with what happens *after* deployment. We are seeing a concerted push toward Test-Time Adaptation (TTA) in computer vision, where models dynamically adjust to distribution shifts on the fly without catastrophic forgetting. In generative modeling, the focus is on test-time scaling and guided decoding—using reward-guided remasking in diffusion models to force outputs to satisfy complex, logical constraints without retraining.\n\nSimilarly, the discourse around autonomous agents is maturing. We are moving past the naive phase of evaluating single agents on isolated toy tasks. This week's research takes a hard look at the systemic friction of deploying agents into shared codebases and the security vulnerabilities of agentic tool-use. The focus is shifting from \"does this agent pass its unit test?\" to \"how does this agent affect the health of the entire repository over time?\"\n\nEven in alignment, there is a growing dissatisfaction with simple, binary human preference data. Researchers are experimenting with simulating internal debates among diverse personas to extract nuanced, natural-language steering principles. For practitioners, the signal this week is clear: the frontier isn't just about building larger models; it is about engineering the sophisticated scaffolding, runtime adaptation, and systemic guardrails required to make existing models work reliably in production.\n\n## What's moving\n* **Test-Time Adaptation (TTA):** TTA is transitioning from a niche computer vision trick to a core requirement for deploying models into dynamic, real-world environments with severe distribution shifts",
+  "top_papers": [
+    {
+      "arxiv_id": "2606.28309",
+      "title": "Surprises in Proper Positive-Only Learning",
+      "url": "https://arxiv.org/abs/2606.28309v1",
+      "score": 10,
+      "subdomain": "THEORY",
+      "authors": "Shai Ben-David, Farnam Mansouri, Anay Mehrotra et al.",
+      "published": "2026-06-26",
+      "lay_summary": "This paper tackles a long-standing theoretical problem in machine learning known as \"proper positive-only learning.\" Imagine you're trying to teach a computer to identify a specific category (e.g., \"elephant\"), but you can only show it examples that *belong* to that category (positive samples). The computer will eventually be evaluated on its ability to distinguish these positive examples from everything else (negative samples, or \"non-elephants\"). This scenario, common in areas like anomaly detection or medical diagnosis where negative examples are hard to define or collect, is called positive-only learning. \"Proper\" learning adds a crucial constraint: the model the computer produces must come from the same family of concepts as the true underlying concept.\n\nThe authors settle a question that has been open since 1987: what precise conditions make a concept class properly learnable from positive-only samples? They discover that a class is learnable if and only if it has a finite VC dimension (a standard measure of complexity) *and* satisfies a new condition they call \"uniform exterior separability.\" This new condition essentially requires that for any set of positive examples, it's possible to find a collection of valid hypotheses that, on average, don't mistakenly label any single negative point as positive too often. Instead of committing to one hypothesis that might be very wrong about the negative space, the learner can effectively \"spread out\" the potential for error.\n\nThis discovery reveals a surprisingly complex learning landscape, refuting a 30-year-old conjecture and showing that positive-only learning is fundamentally different from standard PAC learning. For instance, they prove that for some problems, a randomized algorithm is strictly more powerful than any deterministic one—a sharp contrast to the standard setting. This work significantly deepens our fundamental understanding of the limits and structure of learning from incomplete data.",
+      "what_is_new": "This paper provides the first complete characterization for proper learnability in the positive-only PAC model, settling a question open since Natarajan's 1987 work. The key contributions, detailed in the full paper, are:\n\n-   **Main Characterization (Theorem 4"
+    },
+    {
+      "arxiv_id": "2606.28323",
+      "title": "DexCompose: Reusing Dexterous Policies for Multi-Task Manipulation with a Single Hand",
+      "url": "https://arxiv.org/abs/2606.28323v1",
+      "score": 9,
+      "subdomain": "DEXTEROUS_MANIPULATION",
+      "authors": "Dihong Huang, Zhenyu Wei, Zhuxiu Xu et al.",
+      "published": "2026-06-26",
+      "lay_summary": "This paper introduces DexCompose, a novel framework enabling a single robotic hand to perform complex, sequential manipulation tasks, such as holding a ball while opening a microwave. The core challenge is that actions for the second task often interfere with maintaining the first, like dropping the ball. DexCompose solves this with a two-stage \"discover-then-compose\" approach. First, in a \"discovery\" phase, it runs simulated \"release tests\" to determine the essential fingers needed to maintain the initial grasp. A large language model (LLM) then intelligently selects which fingers to keep for stability and which to free up for the next task, considering the dexterity required. Second, in the \"composition\" phase, it uses two specialized residual modules: a \"bounded residual stabilizer\"",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.28321",
+      "title": "StructSplat: Generalizable 3D Gaussian Splatting from Uncalibrated Sparse Views",
+      "url": "https://arxiv.org/abs/2606.28321v1",
+      "score": 9,
+      "subdomain": "3D Gaussian Splatting",
+      "authors": "Jia-Chen Zhao, Beiqi Chen, Xinyang Chen et al.",
+      "published": "2026-06-26",
+      "lay_summary": "This paper introduces StructSplat, a new method for creating 3D scenes using 3D Gaussian Splatting from a few images taken without any camera information (like position or lens type). This is a challenging task because existing methods often need this camera data, or they struggle to create high-quality, detailed scenes that generalize well to new images.\n\nThe key innovation of StructSplat is its \"structured representation.\" Instead of using a single, monolithic neural network to understand the scene, it uses three specialized encoders that work together. A **geometry encoder** figures out the overall 3D shape and structure. A **semantic encoder** understands the objects and context in the scene (e.g., \"that's a car,\" \"this is a building\"), which helps create a more coherent and globally consistent reconstruction. Finally, a lightweight **texture encoder** focuses specifically on capturing fine-grained details like colors and surface textures from the original images.\n\nThese three streams of information are then combined to predict the properties of millions of tiny 3D Gaussians that make up the scene. To handle the unknown camera positions, the system also predicts the camera parameters. Crucially, it employs a novel \"leakage-free\" training strategy that prevents the model from \"cheating\" by peeking at the target image's information when predicting the scene, which makes the model more robust and generalizable. Experiments show that StructSplat significantly outperforms previous methods, producing much sharper, more detailed, and more accurate 3D reconstructions, especially on challenging datasets.",
+      "what_is_new": "The full paper provides specific details on the core contributions that were mentioned in the abstract.\n\n- **Structured Representation with Decoupled Encoders:** The paper's main contribution is a multi-encoder architecture that explicitly separates the processing of geometry, semantics, and texture.\n    - **Geometry Encoder:** A VGGT-based model provides the foundational 3D structure and depth priors.\n    - **Semantic Encoder:** A pre-trained DINOv3 model is used to extract high-level semantic features, which helps resolve ambiguities and enforce global consistency, especially with sparse views. Ablation studies show this component alone boosts PSNR from 20.61 to 26.24.\n    - **Texture Encoder:** A lightweight convolutional network captures high-resolution, pixel-aligned appearance details. This is crucial for rendering fine textures and accurate colors, which geometry-focused backbones often smooth over. This component further improves PSNR to 28.05.\n\n- **Pixel-Aligned Feature Injection:** The high-resolution features from the texture encoder are injected at a late stage into the Gaussian decoder. This architectural choice (detailed in Figure 4) ensures that fine-grained appearance information is preserved and directly influences the final Gaussian color attributes, preventing the texture degradation common in other methods.\n\n- **Leakage-Free Camera Alignment Strategy:** The paper details a novel training procedure to prevent information leakage from the target view into the source view features, a common problem in models that use cross-attention. It processes two parallel streams: one with source-only images and another with both source and target images. The camera poses are estimated for both streams, and then the target camera pose from the mixed stream is aligned to the coordinate system of the source-only stream. This ensures the Gaussian decoder only ever sees features from the source images, leading to fairer evaluation and better generalization. Ablation studies confirm that removing this strategy degrades performance (PSNR drops by ~0.7 dB).\n\n- **State-of-the-Art Performance:** The full paper provides extensive quantitative results that substantiate the abstract's claims. On the DL3DV benchmark, StructSplat achieves a PSNR of 28.045, which is a massive +5.67 dB improvement over the previous best camera-free method, AnySplat. The method also shows strong cross-dataset generalization to ACID and RealEstate10K, outperforming AnySplat by +1.94 dB and +1.72 dB, respectively."
+    },
+    {
+      "arxiv_id": "2606.28322",
+      "title": "PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception",
+      "url": "https://arxiv.org/abs/2606.28322v1",
+      "score": 5,
+      "subdomain": "EVALUATION",
+      "authors": "Yana Wei, Hongbo Peng, Yanlin Lai et al.",
+      "published": "2026-06-26",
+      "lay_summary": "This paper introduces PerceptionRubrics, a new evaluation framework designed to bridge the gap between high benchmark scores and the real-world brittleness of multimodal AI models. Instead of relying on broad semantic matching, PerceptionRubrics employs a rigorous \"atomic auditing\" approach across 1,038 information-dense images from seven diverse domains, including GUIs, STEM diagrams, and cultural artifacts. The framework is built on over 12,000 detailed, instance-specific rubrics. These are not generated directly from images, but are distilled from human-verified \"golden captions\" (averaging 770 words) created through a novel Circular Peer-Review process where an ensemble of AI models iteratively refines descriptions.\n\nThe rubrics are categorized into \"Must-Right\" (essential facts)",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.28308",
+      "title": "Which Nash Equilibrium? Solver-Dependent Selection on Zero-Sum Nash Polytopes",
+      "url": "https://arxiv.org/abs/2606.28308v1",
+      "score": 0,
+      "subdomain": "Agents & Reasoning",
+      "authors": "Luis Leal",
+      "published": "2026-06-26",
+      "lay_summary": "This paper investigates a fundamental question in game theory and multi-agent AI: when a competitive game has multiple optimal strategies (a \"Nash polytope\"), which specific strategy does an AI solver actually choose? The common assumption is that solvers are interchangeable, but this research challenges that. The authors tested various algorithms on a set of exactly solvable games, including Kuhn poker, and a larger ensemble of 180 randomized games. They found that the choice of algorithm, not random chance, systematically determines which Nash equilibrium is selected. Specifically, \"regularized last-iterate methods\" (like R-NaD) consistently converge to the maximum-entropy equilibrium, which is a more diverse and robust strategy. In contrast, \"regret-averaging methods\" (like CFR+) tend to drift towards lower-entropy, potentially more exploitable strategies. This distinction has practical consequences, as the maximum-entropy strategy can be a better hedge against suboptimal opponents. Understanding these algorithmic biases is crucial for practitioners designing robust AI agents for competitive environments.",
+      "what_is_new": "This paper systematically demonstrates that different Nash equilibrium solvers deterministically select distinct equilibria, with regularized methods converging to maximum-entropy solutions and regret-averaging methods drifting to lower-entropy faces. This challenges the common assumption that solvers are interchangeable and provides a data-supported conjecture for maximum-entropy selection."
+    },
+    {
+      "arxiv_id": "2606.28307",
+      "title": "Second-Order KKT Guarantees for Bregman ADMM in Nonconvex and Non-Lipschitz Optimization",
+      "url": "https://arxiv.org/abs/2606.28307v1",
+      "score": 0,
+      "subdomain": "Scientific Applications",
+      "authors": "Shuang Li, Zhihui Zhu, Qiuwei Li",
+      "published": "2026-06-26",
+      "lay_summary": "This paper delves into the theoretical underpinnings of Bregman ADMM, a powerful optimization algorithm, particularly for challenging problems that are both nonconvex and lack a global Lipschitz gradient constant. Such problems commonly arise in machine learning, for instance, when dealing with matrix and tensor factorization models. The researchers introduce a concept called \"two-sided relative smoothness,\" which offers a more flexible way to analyze these complex optimization landscapes compared to traditional assumptions.\n\nThe core finding is a significant theoretical guarantee: the algorithm, when initialized randomly, will almost certainly avoid \"strict saddle points.\" These are undesirable points in the optimization landscape that can trap algorithms, preventing them from finding truly optimal solutions. By proving that strict saddle KKT points are unstable fixed points, the paper ensures that Bregman ADMM converges to \"second-order stationary points,\" which are generally much better solutions. This analysis is also extended to distributed optimization settings. For practitioners, this means increased confidence in the reliability and convergence quality of Bregman ADMM for specific, difficult optimization tasks.",
+      "what_is_new": "This paper provides novel second-order KKT guarantees for Bregman ADMM under two-sided relative smoothness. It proves that strict saddle points are unstable fixed points, ensuring almost-sure avoidance from random initialization. The analysis extends to multi-block distributed optimization, introducing specific technical innovations for determinant reduction."
+    },
+    {
+      "arxiv_id": "2606.28301",
+      "title": "VGB for Masked Diffusion Model: Efficient Test-time Scaling for Reward Satisfaction and Sample Editing",
+      "url": "https://arxiv.org/abs/2606.28301v1",
+      "score": 0,
+      "subdomain": "Foundation Models & LLMs",
+      "authors": "Kijung Jeon, Thuy-Duong Vuong, Molei Tao",
+      "published": "2026-06-26",
+      "lay_summary": "This paper introduces MDM-VGB, a novel method designed to significantly improve how discrete generative models, specifically Masked Diffusion Models (MDMs), produce outputs that must satisfy complex rules or achieve high scores based on a specific objective. The core idea is to augment the standard unmasking process (where tokens are generated) with a \"reward-guided remasking\" step. This means the model can not only generate new parts of a sequence but also intelligently re-evaluate and modify previously generated tokens if they lead to a low-reward or invalid configuration.\n\nInspired by classical backtracking algorithms, MDM-VGB extends this concept to a flexible masked-state graph, allowing for edits at any position in the generated output. This approach is theoretically robust, proving to achieve quadratic complexity, which is a significant improvement over common trial-and-error methods like best-of-N sampling that can suffer from exponential complexity. For practitioners, this means more efficient and reliable generation of structured data, such as valid code,",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.28294",
+      "title": "Democratic ICAI: Debating Our Way to Steering Principles from Preferences",
+      "url": "https://arxiv.org/abs/2606.28294v1",
+      "score": 0,
+      "subdomain": "Alignment, Safety & Ethics",
+      "authors": "Kevin Kingslin, Anish Natekar, Ashutosh Ranjan et al.",
+      "published": "2026-06-26",
+      "lay_summary": "This paper introduces Democratic ICAI, a new method designed to better understand the complex reasoning behind human preferences, especially in creative tasks. Current AI alignment techniques often struggle because they only capture a final choice, not the multiple criteria or nuanced thoughts that led to it. While Inverse Constitutional AI (ICAI) tried to extract natural-language principles from preferences, its single-pass approach missed much of the detail. Democratic ICAI addresses this by simulating a structured debate among different \"personas,\" each representing a competing rationale for a preference. This process gathers richer, more expressive signals about what influences human decisions. From these detailed signals, the system derives clearer and more comprehensive steering principles. These principles are then used to guide AI decision-making, both with large language models and traditional decision trees. Experiments on creative preference benchmarks showed that Democratic ICAI more faithfully captured preference structures, improved prediction accuracy, and produced \"constitutions\" that LLM annotators preferred. Practitioners can use this to build more interpretable and steerable AI systems that genuinely reflect complex human values.",
+      "what_is_new": "Democratic ICAI introduces a novel approach that uses structured persona debate to gather multiple competing rationales underlying human judgments. This method yields richer signals for deriving more comprehensive natural-language steering principles compared to single-pass Inverse Constitutional AI."
+    },
+    {
+      "arxiv_id": "2606.28287",
+      "title": "Bridging Ab Initio Symmetries and Global Nuclear Masses with Interpretable Neural Networks",
+      "url": "https://arxiv.org/abs/2606.28287v1",
+      "score": 0,
+      "subdomain": "Scientific Applications",
+      "authors": "Phong Dang, Evander Espinoza, Xiaoliang Wan et al.",
+      "published": "2026-06-26",
+      "lay_summary": "This paper explores whether fundamental symmetries of the nuclear force, specifically Wigner's SU(4) and Elliott's SU(3), govern nuclear binding across the entire chart of nuclei, not just lighter ones. The researchers developed three interpretable neural network models (FINN, GINN, WINN) that incorporate these symmetry operators (Casimir operators) as core components. These models were trained on existing nuclear mass data (AME2016) and validated on newer data (AME2020). The most notable model, WINN, functions as a compact mass formula built directly on these symmetry operators. It achieved a competitive prediction accuracy (0.430 MeV RMSE) while offering significant physical insights. WINN revealed an enhancement of Wigner's symmetry near the neutron dripline, suggesting its restoration, and an unexpected gain of a quartic operator in the superheavy region. This work demonstrates how physics-informed, interpretable AI can not only predict but also uncover new fundamental principles in complex scientific domains, elevating emergent symmetries from specific cases to a governing principle for all nuclei.",
+      "what_is_new": "This paper introduces a novel class of interpretable neural network models (FINN, GINN, WINN) that integrate fundamental nuclear symmetries (SU(3), SU(4) Casimir operators) to predict nuclear masses. Crucially, these models uncover new physical insights, such as symmetry restoration near the neutron dripline, across the entire nuclear chart."
+    },
+    {
+      "arxiv_id": "2606.28281",
+      "title": "PAC-Bayesian Certificates for Quadratic Closed-Loop Control",
+      "url": "https://arxiv.org/abs/2606.28281v1",
+      "score": 0,
+      "subdomain": "Reinforcement Learning & Planning",
+      "authors": "Domagoj Herceg",
+      "published": "2026-06-26",
+      "lay_summary": "This paper tackles a significant challenge in applying PAC-Bayesian learning theory to control systems: providing reliable safety guarantees when the performance objective is an unbounded quadratic cost. Traditional PAC-Bayes methods struggle",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2606.28279",
+      "title": "Agentic Hardware Design as Repository-Level Code Evolution",
+      "url": "https://arxiv.org/abs/2606.28279v1",
+      "score": 0,
+      "subdomain": "Agents & Reasoning",
+      "authors": "Cunxi Yu, Chenhui Deng, Nathaniel Pinckney et al.",
+      "published": "2026-06-26",
+      "lay_summary": "This paper introduces HORIZON, a novel self-evolving agent framework designed to automate hardware design by treating it as a process of \"repository-level code evolution.\" Unlike previous agentic systems focused on software, HORIZON extends this paradigm to hardware artifacts. The system operates with a \"hands-free agent loop,\" where a Markdown harness provides domain knowledge, an evaluator, and acceptance criteria. The agent then iteratively evolves an isolated Git worktree, using standard repository operations for state management and traceability.\n\nThe researchers evaluated HORIZON across several benchmarks, including ChipBench, RTLLM, Verilog-Eval, and nine CVDP categories, achieving 100% completion across all suites without human intervention. This demonstrates a significant step towards automating complex engineering tasks in chip design. While the authors acknowledge that these benchmarks are proxies for the broader challenges of real-world chip design, HORIZON represents a powerful advancement for practitioners in hardware development and agentic AI, offering a glimpse into future autonomous design workflows.",
+      "what_is_new": "HORIZON introduces the first self-evolving agent framework that applies repository-level code evolution directly to hardware design artifacts, extending prior work from software systems. It features a hands-free agent loop that uses a Markdown harness to guide the evolution of hardware designs within a Git worktree."
+    },
+    {
+      "arxiv_id": "2606.28277",
+      "title": "Towards Automating Scientific Review with Google's Paper Assistant Tool",
+      "url": "https://arxiv.org/abs/2606.28277v1",
+      "score": 0,
+      "subdomain": "Scientific Applications",
+      "authors": "Rajesh Jayaram, Drew Tyler, David Woodruff et al.",
+      "published": "2026-06-26",
+      "lay_summary": "This paper addresses the growing challenge of scaling scientific peer review in an era of AI-accelerated research. It argues that traditional human review cannot keep pace with the influx of AI-assisted scientific output, necessitating AI tools to aid the verification process. The authors propose a four-level taxonomy for AI-human collaboration in scientific evaluation to frame this transition. As a concrete step, they introduce the Paper Assistant Tool (PAT), an agentic AI framework designed for deep scientific review. PAT ingests full manuscripts to evaluate theoretical results, validate experiments, suggest improvements, and identify potential flaws. By employing inference scaling techniques, PAT reportedly identifies deeper issues than single model calls, achieving a 34% improvement over zero-shot recall on mathematical errors in the SPOT benchmark. Pilot deployments at major Computer Science conferences (STOC and ICML) demonstrated PAT's ability to catch critical errors and suggest substantive improvements, easing the burden on human referees while preserving their",
+      "what_is_new": ""
+    }
+  ],
+  "sample": false
+}
