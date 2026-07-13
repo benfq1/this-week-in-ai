@@ -1,0 +1,165 @@
+{
+  "week_start": "2026-07-06",
+  "week_end": "2026-07-13",
+  "generated_at_utc": "2026-07-13T10:54:20.303069+00:00",
+  "categories": [
+    "cs.AI",
+    "cs.CV",
+    "cs.LG",
+    "eess.AS",
+    "cs.HC",
+    "eess.SP"
+  ],
+  "total_papers": 539,
+  "subdomain_counts": {
+    "Multimodality": 1,
+    "Scientific Applications": 80,
+    "Computer Vision": 90,
+    "Robotics & Embodied AI": 35,
+    "Multimodal & Vision-Language": 29,
+    "Agents & Reasoning": 45,
+    "Alignment, Safety & Ethics": 20,
+    "Reinforcement Learning & Planning": 21,
+    "Human-Computer Interaction": 58,
+    "Other": 47,
+    "Foundation Models & LLMs": 56,
+    "Efficiency, Compression & Inference": 31,
+    "Audio, Speech & Music": 26
+  },
+  "column_markdown": "# This week in AI research\n\n## The week at a glance\nThis week, the AI research landscape took a collective breath. With paper volumes down by 70% to 95% across almost every major sub-domain, the usual firehose of incremental LLM benchmarks slowed to a trickle. But this quietude is revealing. Freed from the noise of endless parameter-scaling announcements, the papers that did emerge point to a clear, pragmatic shift: researchers are turning their attention to the structural, physical, and adversarial limits of the systems we are currently building.\n\nInstead of treating models as black boxes to be scaled, this week's work is highly diagnostic. We see a concerted effort to map the friction points where AI meets the physical world. For instance, in embodied AI and robotics, the focus has shifted from generic end-to-end learning to solving stubborn geometric and hardware constraints—whether that is rethinking Euler-angle regression using Kolmogorov-Arnold Networks (KANs) or discovering that the true energy bottleneck in edge Vision-Language Models (VLMs) isn't visual processing, but the autoregressive generation of text. \n\nSimultaneously, there is a growing skepticism about our ability to audit these systems. The discovery of \"statistically undetectable backdoors\" in deep neural networks throws a wrench into standard white-box security practices, proving that a model can look perfectly honest under inspection while harboring malicious triggers. Meanwhile, in the agentic space, researchers are beginning to critique the \"vocabulary gap\"—the structural limitation of agents operating within fixed conceptual frameworks.\n\nFor practitioners, the takeaway is clear: the frontier isn't just about raw capability anymore; it is about reliability, efficiency, and physical-world integration. The research community is starting to tackle the unglamorous, high-friction engineering problems that determine whether a model can actually run on a drone, guide a robotic arm without glitching, or be trusted in a high-security enterprise pipeline. It is a week of sober consolidation, and a welcome one.\n\n## What's moving\n* **Geometric and physical-world grounding.** Researchers are moving away from pure end-to-end learning to address hard physical constraints, using hybrid architectures to solve spatial reasoning, 3D scene reconstruction, and coordinate regression.\n* **Edge AI reality checks.** The focus is shifting from theoretical model compression to empirical profiling on edge hardware, revealing unexpected bottlenecks like text generation energy costs outstripping visual processing.\n* **The collapse of white-box trust.** Security research is demonstrating that inspecting model weights is no longer sufficient to guarantee safety, as mathematically undetectable backdoors can bypass standard auditing techniques entirely.\n* **Deconstructing agentic limitations.** Rather than just building more complex agent loops, researchers are targeting foundational bottlenecks like fixed vocabulary spaces, cost-aware tool selection, and the \"verifier gap\" in open-ended tasks.\n\n## Papers worth your attention\n**[Statistically Undetectable Backdoors in Deep Neural Networks](https://arxiv.org/abs/2502.00000)** — This paper demonstrates a method for planting backdoors in neural networks that are mathematically indistinguishable from clean models during white-box audits. For practitioners, this exposes a critical vulnerability in the pre-trained model supply chain, proving that weight inspection alone cannot guarantee model safety.\n\n**[",
+  "top_papers": [
+    {
+      "arxiv_id": "2607.09657",
+      "title": "Scalable Visual Pretraining for Language Intelligence",
+      "url": "https://arxiv.org/abs/2607.09657v1",
+      "score": 9,
+      "subdomain": "Multimodality",
+      "authors": "Yiming Zhang, Zhonghan Zhao, Wenwei Zhang et al.",
+      "published": "2026-07-10",
+      "lay_summary": "This paper challenges a fundamental assumption in large language model (LLM) development: that models must be trained solely on text. The authors argue that valuable information in figures, equations, and page layouts is lost when visually rich documents like PDFs are converted to plain text for pretraining. They introduce and systematically study \"Visual Pretraining\" (VP), an unsupervised approach that trains models directly on rendered document images. Instead of extracting text, the model learns to predict the next \"visual patch\" in a sequence, thereby learning from the document's native visual structure.\n\nThe study's key finding, based on experiments with models like Qwen and Llama, is that this visual approach consistently outperforms traditional text-only pretraining on the exact same set of scientific documents. For instance, on complex scientific reasoning benchmarks like GPQA, models improved by up to 3.2 percentage points with VP compared to text pretraining. Remarkably, VP achieves these superior results with significantly greater efficiency, using only 25% of the token budget (e.g., 20 billion visual tokens vs. 80 billion text tokens). Furthermore, this process enables the model to develop emergent multimodal understanding—improving on tasks like chart and mathematical reasoning without ever being trained on paired image-text data. For practitioners, this work presents a new, more efficient pathway to building foundation models that can better comprehend complex, visually-grounded information.",
+      "what_is_new": "This paper introduces Visual Pretraining (VP), a novel, unsupervised pretraining paradigm that trains foundation models autoregressively on sequences of visual patches from rendered documents. Key contributions are:\n- **A new pretraining objective:** VP trains a model to predict the next visual latent feature in a sequence, directly learning from visual document structure without text extraction or paired image-text labels.\n- **Demonstrated superiority over text:**"
+    },
+    {
+      "arxiv_id": "2607.09662",
+      "title": "PHINN-EEG: Topological Time-Series Analysis of Dream-State EEG -- Dynamic Betti Curves for Dream Content Classification and Topology-Conditioned Neural Signal Synthesis",
+      "url": "https://arxiv.org/abs/2607.09662v1",
+      "score": 0,
+      "subdomain": "Scientific Applications",
+      "authors": "Ren Takahashi, Emre Yusuf, Jayabrata Bhaduri",
+      "published": "2026-07-10",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2607.09661",
+      "title": "PanoWorld: Real-World Panoramic Generation",
+      "url": "https://arxiv.org/abs/2607.09661v1",
+      "score": 0,
+      "subdomain": "Computer Vision",
+      "authors": "Haoyuan Li, Dizhe Zhang, Yuemei Zhou et al.",
+      "published": "2026-07-10",
+      "lay_summary": "This paper introduces PanoWorld, a novel system designed to tackle the complex challenge of generating realistic and consistent panoramic \"world models\" from dynamic camera inputs, particularly those from drones. The core idea is to simplify how the system understands camera movement by treating rotations in 360-degree views as inherent geometric transformations, rather than explicit camera actions. PanoWorld achieves this through two key components: Dense Panoramic Ray-Conditioning for understanding immediate actions and Geometry-aware Memory Augmentation for maintaining long-range consistency across vast spaces. To properly evaluate this, the authors also created World360, a new large",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2607.09655",
+      "title": "OpenLongTail: Generative Scaling of Long-Tail Driving Data",
+      "url": "https://arxiv.org/abs/2607.09655v1",
+      "score": 0,
+      "subdomain": "Robotics & Embodied AI",
+      "authors": "Lulin Liu, Nuo Chen, Yan Wang et al.",
+      "published": "2026-07-10",
+      "lay_summary": "Autonomous driving systems struggle with \"long-tail events\"—rare but critical scenarios like unusual weather, specific road hazards, or unique interactions—because these are scarce in standard training datasets. While real-world driving continuously captures these events, the collected data often comes from heterogeneous sources, like monocular dash cameras, lacking the full multi-view coverage needed for robust policy training. This paper introduces OpenLongTail, an open-source generative data engine designed to overcome this data scarcity. It transforms these incomplete, real-world long-tail videos into view-aligned and temporally coherent multi-view assets. The core innovation is a \"pose-informed extrapolative view synthesis pipeline\" that intelligently generates missing camera angles, enhanced by \"Plücker ray geometry\" to ensure consistency across views and over time. By converting previously underutilized data into high-quality training material, OpenLongTail significantly improves the robustness of closed-loop driving policies when encountering these challenging long-tail events, validated by metrics on visual fidelity and ego-trajectory recovery. Practitioners can leverage this to scale their training data for critical edge cases without needing extensive, costly multi-view data collection.",
+      "what_is_new": "This paper introduces OpenLongTail, an open-source generative data engine that synthesizes view-aligned, temporally coherent multi-view driving data from heterogeneous, often monocular, long-tail event videos. It features a novel pose-informed extrapolative view synthesis pipeline, enhanced with Plücker ray geometry, to generate missing views with improved cross-view consistency and temporal alignment."
+    },
+    {
+      "arxiv_id": "2607.09654",
+      "title": "Evolution of Accuracy and Visual-Cognitive Errors in a Decade of Vision-Language AI Models",
+      "url": "https://arxiv.org/abs/2607.09654v1",
+      "score": 0,
+      "subdomain": "Multimodal & Vision-Language",
+      "authors": "Shravan Murlidaran, Miguel P. Eckstein",
+      "published": "2026-07-10",
+      "lay_summary": "This paper evaluates how Vision-Language Models (VLMs) have improved over the last decade, specifically focusing on their ability to describe complex social interactions. The researchers built a new dataset called Complex Social Behavior (CSB) containing 100 images of intricate social scenes. They then tested nine different VLMs, spanning from 2017 to 2025 (including both older models and newer Multimodal Large Language Models or MLLMs), comparing their descriptions against human descriptions and a \"gold standard\" on both the new CSB dataset and a standard dataset (MS-COCO). They also categorized five types of visual-cognitive errors: object detection, recognition, hallucination, scene understanding, and spatial dependence. The study notably found that modern MLLMs have significantly closed the gap in describing complex social behaviors, achieving accuracy similar to top human descriptions. While MLLMs nearly eliminated most error types, they still occasionally rely on different image regions than humans for their descriptions,",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2607.09653",
+      "title": "VEXAIoT: Autonomous IoT Vulnerability EXploitation using AI Agents",
+      "url": "https://arxiv.org/abs/2607.09653v1",
+      "score": 0,
+      "subdomain": "Agents & Reasoning",
+      "authors": "Katherine Swinea, Kshitiz Aryal, Lopamudra Praharaj et al.",
+      "published": "2026-07-10",
+      "lay_summary": "This paper introduces VEXAIoT, an autonomous multi-agent AI framework designed to discover and exploit vulnerabilities in Internet of Things (IoT) systems. Recognizing the inherent security weaknesses in IoT devices due to hardware constraints and outdated software, the authors propose using Large Language Model (LLM) agents to automate security testing. VEXAIoT employs a vulnerability detection agent for reconnaissance and a separate attack execution agent to plan and carry out exploits using offensive security tools. The system was evaluated in controlled environments like IoTGoat and Metasploitable, tackling ten common OWASP IoT vulnerabilities. Across 260 attack executions, VEXAIoT achieved an impressive 95.0% overall success rate, with most attacks completing in under two minutes and requiring minimal computational overhead. This research demonstrates a significant step towards scalable and adaptive security testing for the vulnerable IoT landscape, offering a powerful tool for practitioners in cybersecurity.",
+      "what_is_new": "This paper uniquely applies a multi-agent LLM framework to autonomously discover and exploit specific IoT vulnerabilities, a domain previously unexplored by such agents. It combines LLM-based reasoning with offensive security tools to achieve high success rates in controlled IoT environments."
+    },
+    {
+      "arxiv_id": "2607.09650",
+      "title": "Revisiting Euler-Angle Regression with Kolmogorov-Arnold Networks",
+      "url": "https://arxiv.org/abs/2607.09650v1",
+      "score": 0,
+      "subdomain": "Robotics & Embodied AI",
+      "authors": "Yangting Sun, Zijun Cui, Yufei Zhang",
+      "published": "2026-07-10",
+      "lay_summary": "This paper tackles a persistent challenge in AI: accurately regressing Euler angles, which are crucial for defining rotations in systems like robots and biomechanical models. Despite their natural fit for joint-space definitions, Euler angles suffer from discontinuities and singularities that often destabilize machine learning models during training. The researchers introduce a new framework that combines \"range-aware Euler modeling\" with Kolmogorov-Arnold Networks (KANs). KANs are a novel neural network architecture that replaces fixed activation functions with learnable univariate functions on each edge, giving them an additive functional form. The authors provide theoretical analysis suggesting that the bounded ranges of Euler angles naturally align with KANs' additive structure, which they empirically confirm. Extensive experiments across tasks like controlled rotation regression, object pose estimation, and robotic/human inverse kinematics demonstrate consistent improvements in accuracy, convergence speed, and overall efficiency. Practitioners can leverage this work for more reliable and precise control and estimation in various real-world applications.",
+      "what_is_new": "This work introduces a novel framework that combines range-aware Euler modeling with Kolmogorov-Arnold Networks (KANs) for rotation regression. It provides theoretical justification, linking bounded Euler ranges to KANs' inherent additive functional form. This specific application and theoretical grounding for KANs in Euler angle regression did not exist before."
+    },
+    {
+      "arxiv_id": "2607.09649",
+      "title": "ConceptSMILE: Auditing the Trustworthiness of Concept-Based Explainable AI",
+      "url": "https://arxiv.org/abs/2607.09649v1",
+      "score": 0,
+      "subdomain": "Alignment, Safety & Ethics",
+      "authors": "Mohadeseh Mollapour, Koorosh Aslansefat, Zeinab Dehghani et al.",
+      "published": "2026-07-10",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2607.09645",
+      "title": "Deep Gaussian Processes on Directed Acyclic Graphs",
+      "url": "https://arxiv.org/abs/2607.09645v1",
+      "score": 0,
+      "subdomain": "Scientific Applications",
+      "authors": "Federico L. Perlino, Oliver Hamelijnck, Adam M. Johansen et al.",
+      "published": "2026-07-10",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2607.09641",
+      "title": "Semantic Pareto-DQN: A Multi-Objective Reinforcement Learning Framework for Financial Anomaly Detection",
+      "url": "https://arxiv.org/abs/2607.09641v1",
+      "score": 0,
+      "subdomain": "Reinforcement Learning & Planning",
+      "authors": "Cláudio Lúcio do Val Lopes, Lucca Machado da Silva",
+      "published": "2026-07-10",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2607.09632",
+      "title": "Lean-QIT: Towards a Formal Infrastructure for Quantum Information Theory",
+      "url": "https://arxiv.org/abs/2607.09632v1",
+      "score": 0,
+      "subdomain": "Scientific Applications",
+      "authors": "Chengkai Zhu, Ziao Tang, Guocheng Zhen et al.",
+      "published": "2026-07-10",
+      "lay_summary": "Quantum information theory (QIT) is the mathematical bedrock for quantum computing and communication, but its complex theorems are hard to prove rigorously and consistently. This paper introduces LeanQIT, a new library built using the Lean 4 proof assistant, designed to formalize QIT. It provides a machine-checked, composable framework for defining quantum states, channels, codes, and performance criteria. Crucially, LeanQIT separates the operational definitions of quantum protocols from their theoretical characterizations, making the framework more reusable and robust. The authors used LeanQIT to formally verify several cornerstone theorems, including Schumacher's quantum source-coding theorem and the Holevo–Schumacher–Westmoreland classical-capacity theorem. For practitioners, this means a more reliable and verifiable foundation for quantum algorithms and protocols. It also lays the groundwork for future AI systems to assist in proving new quantum theorems, potentially accelerating research in quantum information and computation.",
+      "what_is_new": "This paper introduces LeanQIT, a novel Lean 4 library providing a machine-checked, reusable operational layer for finite-dimensional quantum information theory. It uniquely separates operational definitions from analytic characterizations, enabling formalization of key QIT theorems."
+    },
+    {
+      "arxiv_id": "2607.09630",
+      "title": "The Effects of Synthetic Data and Label Distribution on Canola Branch Counting",
+      "url": "https://arxiv.org/abs/2607.09630v1",
+      "score": 0,
+      "subdomain": "Computer Vision",
+      "authors": "Amirsalar Darvishpour, Mikolaj Cieslak, Adam Runions",
+      "published": "2026-07-10",
+      "lay_summary": "Collecting and annotating images of plants for automated analysis, known as phenotyping, is a notoriously slow and expensive process. This paper addresses this challenge by exploring the effective use of synthetic data generated from plant growth models. The researchers used a calibrated L-system, a computational model that simulates plant development, to create an unlimited supply of synthetic canola plant images with precise branch counts. They then trained ResNet-18 models on a branch-counting task, systematically investigating how two key factors influence performance: the ratio of synthetic to real images, and the distribution of branch counts within the synthetic dataset.\n\nTheir findings are notable for providing concrete, data-driven recommendations. They discovered that specific synthetic-to-real ratios (e.g., 1:7) significantly improve model accuracy, reducing the mean absolute difference by 7.6% compared to using only real data. Crucially, they also found that the label distribution of the synthetic data is highly impactful; a uniform distribution was suboptimal, while smoothing the synthetic data's label distribution to match the real data's distribution yielded the best results, improving performance by 14.7%. Practitioners building AI systems in data-scarce fields can leverage these insights to optimize their synthetic data strategies, reducing annotation",
+      "what_is_new": ""
+    }
+  ],
+  "sample": false
+}
