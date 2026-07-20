@@ -1,0 +1,168 @@
+{
+  "week_start": "2026-07-13",
+  "week_end": "2026-07-20",
+  "generated_at_utc": "2026-07-20T10:49:01.749555+00:00",
+  "categories": [
+    "cs.AI",
+    "cs.CV",
+    "cs.LG",
+    "eess.AS",
+    "cs.HC",
+    "eess.SP"
+  ],
+  "total_papers": 551,
+  "subdomain_counts": {
+    "ROBOT_LEARNING": 1,
+    "Multimodal & Vision-Language": 45,
+    "Systems & Infrastructure": 1,
+    "Efficient Inference": 1,
+    "Video Understanding": 1,
+    "Efficiency, Compression & Inference": 37,
+    "Human-Computer Interaction": 55,
+    "Scientific Applications": 68,
+    "Reinforcement Learning & Planning": 14,
+    "Agents & Reasoning": 56,
+    "Robotics & Embodied AI": 37,
+    "Computer Vision": 84,
+    "Alignment, Safety & Ethics": 31,
+    "Foundation Models & LLMs": 39,
+    "Audio, Speech & Music": 28,
+    "Other": 53
+  },
+  "column_markdown": "# This week in AI research\n\n## The week at a glance\nThis week, the AI research landscape experienced a dramatic, quiet lull, with paper volumes plummeting by 80% to 90% across nearly every major sub-domain. Yet, what the week lacked in sheer volume, it made up for in structural introspection. The dominant energy was not about scaling up or chasing marginal benchmark gains, but rather looking inward at the systems we have already built. Researchers are shifting from black-box optimization to mechanistic and systemic diagnostics, asking hard questions about *why* models behave the way they do and how their internal architectures actually organize information.\n\nThis introspective turn is highly visible across multiple domains. In structural biology, instead of using AlphaFold2 as a static prediction tool, researchers treated its 93 million parameters as a physical object to map hidden protein landscapes. In natural language processing, we saw a move away from superficial evaluations toward diagnostic frameworks like CRAFT, which clusters rubrics to pinpoint specific capability failures, and deep dives into how pretraining choices dictate the success of post-training reinforcement learning.\n\nEven the agentic and multi-agent spaces—previously dominated by uncritical \"more is better\" assembly—are facing a sobering reality check. Researchers are applying information bottleneck theory to explain why multi-agent systems often fail to outperform single agents, and introducing concepts like the \"Honest Quorum Problem\" to address how consensus-driven agent networks can collectively agree on completely incorrect decisions.\n\nFor practitioners, this quiet week is actually a gift. It signals a transition from frantic implementation to rigorous engineering. The focus is moving toward interpretability, reliability, and efficiency—exemplified by blueprints for thermodynamic computing and lightweight saliency maps for vision-language models. It is a reminder that the next leap in AI capability will likely come from understanding our current models' limits, not just feeding them more data.\n\n## What's moving\n* **Systemic Diagnostics:** A shift from black-box evaluation to diagnostic debugging. Frameworks are moving beyond scoring model outputs to pinpointing exact architectural or data-driven failure modes.\n* **Agentic Skepticism:** The honeymoon phase for multi-agent systems is ending. Research is focusing on epistemic failures, coordination overhead, and information bottlenecks that limit multi-agent superiority over single agents.\n* **Mechanistic Interpretability as a Tool:** Interpretability is transitioning from academic curiosity to practical engineering. Techniques like neural spectroscopy and lightweight saliency mapping are being used to extract hidden capabilities and debug visual reasoning.\n* **Hardware-Native Efficiency:** Interest in non-traditional hardware paradigms is growing. Researchers are designing algorithms specifically for analog, thermodynamic, or biologically constrained systems to bypass the energy bottlenecks of standard silicon.\n\n## Papers worth your attention\n**[Neural spectroscopy of AlphaFold2 reveals encoded protein conformational landscapes](https://arxiv.org/)** — This paper introduces a method to analyze AlphaFold2's internal weights, revealing that the model implicitly encodes complex protein dynamics and alternative shapes. For practitioners, it demonstrates how to extract valuable, emergent scientific knowledge hidden within the weights of frozen foundation models.\n\n**[The Honest Quorum Problem: Epistemic Byzantine Fault Tolerance for Agentic Infrastructure](https://arxiv.org/)** — This work defines a new failure mode where networks of LLM agents collectively agree on semantically invalid decisions despite following communication protocols perfectly. It is crucial for developers building multi-agent systems, as it highlights the need for epistemic safeguards beyond traditional consensus protocols.\n\n**[CRAFT: Clustering Rubrics to Diagnose Weak LLM Capabilities and Generate Targeted Fine-Tuning Data](https://arxiv.org/)** — This paper presents a diagnostic method that clusters evaluation rubrics to identify exactly why an LLM fails, then generates targeted data to fix those specific weaknesses. It provides a highly practical pipeline for teams looking to systematically debug and fine-tune models on custom enterprise tasks.\n\n**[Audio-Visual Flamingo: Open Audio-Visual Intelligence for Long and Complex Videos](https://arxiv.org/)** — This open-source model is designed to reason across audio, images, and long-form video by linking its chain-of-thought steps to specific timestamps. It matters because it provides a powerful, open-weight alternative to proprietary models for complex, real-world multimedia analysis.\n\n**[When Do Multi-Agent Systems Help? An Information Bottleneck Perspective](https://arxiv.org/)** — This paper uses information theory to analyze when and why multi-agent architectures outperform single-agent setups. It helps practitioners avoid unnecessary engineering complexity by providing a framework to predict if a multi-agent approach will actually yield better results.\n\n**[A Blueprint for Equilibrium-Based Differentiable Continuous-Variable Thermodynamic Computing](https://arxiv.org/)** — This paper outlines a hardware-software co-design blueprint for running probabilistic machine learning models directly on analog, thermodynamic hardware. It is a vital read for hardware-adjacent practitioners looking for long-term alternatives to the unsustainable energy demands of digital silicon.\n\n## Horizon signals\n* **Thermodynamic ML:** Moving machine learning workloads off digital silicon and onto analog, noise-driven thermodynamic circuits to achieve orders-of-magnitude improvements in energy efficiency.\n* **Active Observation in VLMs:** Transitioning vision-language models from passive image processors to active observers that dynamically redirect their \"gaze\"",
+  "top_papers": [
+    {
+      "arxiv_id": "2607.16192",
+      "title": "MotionForesight: Re-purposing Video Models for Future 3D Scene-Flow Prediction",
+      "url": "https://arxiv.org/abs/2607.16192v1",
+      "score": 9,
+      "subdomain": "ROBOT_LEARNING",
+      "authors": "Homanga Bharadhwaj, Yash Jangir",
+      "published": "2026-07-17",
+      "lay_summary": "This paper introduces MotionForesight, a novel method for predicting the future 3D movement of points on objects manipulated by humans, using only a short monocular video as input. The core idea is to cleverly re-purpose a powerful, pre-trained model originally designed for *tracking* object movement in existing videos. Instead of showing the model the whole video, the researchers only show it the first few frames and \"hide\" the future. They then train a very small, lightweight \"adapter\" to teach the model how to predict the future 3D motion for these hidden parts, based only on the initially observed motion. This approach is highly efficient because the huge underlying video model is kept \"frozen\" (unchanged), and only the small adapter needs to be trained. Despite being trained on a relatively small dataset of 40,000 videos, MotionForesight produces plausible 3D motion forecasts for a wide variety of objects and actions, and is shown to outperform much larger models trained on over a million videos, even without needing any extra information like text descriptions of the",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2607.16193",
+      "title": "Knowing the Self, Understanding the World: A Dual-Cognition Benchmark for UAV Spatio-temporal Reasoning with MLLMs",
+      "url": "https://arxiv.org/abs/2607.16193v1",
+      "score": 5,
+      "subdomain": "Multimodal & Vision-Language",
+      "authors": "Like Liu, Zhengzheng Xu, Haitao He et al.",
+      "published": "2026-07-17",
+      "lay_summary": "This paper introduces UAV-DualCog, a new benchmark designed to test how well multimodal large language models (MLLMs) can reason in drone (UAV) scenarios. The benchmark is built on the core idea of \"dual cognition,\" meaning it evaluates a model's ability to reason about both its own state (self-awareness) and the external world (environment-awareness) simultaneously. For example, tasks require the model to answer questions like \"Where am I in relation to that building?\" (self-aware) and \"Which way should I fly to get closer to that bridge?\" (environment-aware). The evaluation covers both static images and flight videos. Crucially, models must not only provide a correct text answer but also provide evidence by pinpointing the relevant object with a bounding box in an image or identifying the correct time interval in a video. The benchmark is automatically generated from 3D simulations, making it scalable and diverse. Experiments show that even top-tier models like GPT-5.5 struggle with these tasks, especially in understanding their own position and precisely locating objects and events, demonstrating a significant gap between current MLLM capabilities and the robust reasoning required for autonomous UAVs.",
+      "what_is_new": "The full paper provides substantial detail beyond the abstract"
+    },
+    {
+      "arxiv_id": "2607.16190",
+      "title": "FVAttn: Adaptive Sparse Attention with Runtime Load Balancing for Video Generation",
+      "url": "https://arxiv.org/abs/2607.16190v1",
+      "score": 5,
+      "subdomain": "Systems & Infrastructure",
+      "authors": "Hao Liu, Chenghuan Huang, Ye Huang et al.",
+      "published": "2026-07-17",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2607.16184",
+      "title": "PagedWeight: Efficient MoE LLM Serving with Dynamic Quality-Aware Weight Quantization",
+      "url": "https://arxiv.org/abs/2607.16184v1",
+      "score": 5,
+      "subdomain": "Efficient Inference",
+      "authors": "Yuchen Yang, Yifan Zhao, Anisha Dasgupta et al.",
+      "published": "2026-07-17",
+      "lay_summary": "Mixture-of-Experts (MoE) models are a powerful class of large language models, offering high performance and efficiency. However, deploying these models for real-time inference, especially in scenarios with many concurrent users, presents a significant memory challenge. GPUs must store both the vast model weights and the \"KV cache,\" which holds the conversational history for each active user. As the KV cache grows with more users or longer interactions, it competes directly with the model weights for precious GPU memory, leading to a tension that often forces compromises between model quality, memory usage, and serving throughput.\n\nThis paper introduces PagedWeight, a novel management system designed to resolve this tension. PagedWeight treats the components of MoE expert weights as \"pages\" of memory, similar to how modern systems manage the KV cache. It can dynamically \"offload\" less important weight pages from the GPU to CPU RAM at runtime by quantizing them (reducing their numerical precision). This process is guided by a sophisticated quality-aware planner that considers three key factors: the inherent sensitivity of each weight, which experts are being used most frequently (\"hot\" experts), and the specific characteristics of the user's prompt. By continuously balancing expert-weight precision with KV cache requirements, PagedWeight frees up GPU memory precisely when and where it is needed.\n\nThe results are significant: on long-context tasks, PagedWeight can match the accuracy of a full-precision (FP16) model while using less than a third of the GPU memory (e.g., 9.9GB vs 35.3GB). This translates to a 1.94x throughput improvement in memory-limited scenarios, all with a negligible impact on latency (at most a 4.1% drop). This makes deploying large MoE models much more economical and scalable, addressing a critical bottleneck for practical applications.",
+      "what_is_new": "PagedWeight introduces a novel, fine-grained system for MoE LLM serving that dynamically quantizes model weights at runtime to free memory for the KV cache. Its key innovations, not fully detailed in the abstract, include:\n\n1.  **Paged Representation for Weights:** The system is built on the insight that MoE expert weights can be managed like paged memory. It leverages the Any-Precision LLM (APL) format, treating its bit-planes and lookup tables as \"weight pages\" that can be individually offloaded from GPU to CPU RAM. This is analogous to how vLLM's PagedAttention manages the KV cache, but applied to the model weights themselves.\n\n2.  **Three-Factor Quality-Aware Planner:** The core intelligence lies"
+    },
+    {
+      "arxiv_id": "2607.16189",
+      "title": "Searching Videos as Trees: Self-Correcting Agents for Grounded Long Video QA",
+      "url": "https://arxiv.org/abs/2607.16189v1",
+      "score": 0,
+      "subdomain": "Video Understanding",
+      "authors": "Ce Zhang, Ziyang Wang, Yulu Pan et al.",
+      "published": "2026-07-17",
+      "lay_summary": "This paper introduces VideoTreeSearch (VTS), a new framework for AI agents to answer questions about very long videos and pinpoint the exact supporting evidence. Current agentic methods often get stuck on an incorrect path because they can only narrow their search and lack a reliable way to backtrack. VTS solves this by first organizing the video's content into an adaptive temporal tree, where each branch represents a semantically coherent scene, identified by detecting major visual changes. An AI agent then learns to navigate this tree using four explicit operations: `zoom_in` to explore a scene in more detail, `zoom_out` to go back up a level, `shift` to explore a sibling scene, and `answer` to finalize its conclusion. This structure makes self-correction an explicit, learnable skill.\n\nTo train this skill, the researchers developed a unique method that generates example search paths, including deliberate detours into incorrect branches followed by successful recovery. The agent is first trained to imitate these correct and corrective actions, and then further refined using reinforcement learning. On three challenging long-video QA benchmarks, VTS significantly outperforms previous agentic methods, for instance improving grounding accuracy by +12.",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2607.16183",
+      "title": "A Blueprint for Equilibrium-Based Differentiable Continuous-Variable Thermodynamic Computing",
+      "url": "https://arxiv.org/abs/2607.16183v1",
+      "score": 0,
+      "subdomain": "Efficiency, Compression & Inference",
+      "authors": "Owen Lockwood, Jérémy Béjanin, Joost Bus et al.",
+      "published": "2026-07-17",
+      "lay_summary": "This paper introduces a detailed blueprint for a new type of computer designed to tackle the massive energy and latency demands of modern machine learning. The core idea is \"thermodynamic computing,\" which uses stochastic (random) analog processes in physical hardware, specifically leveraging \"Langevin dynamics\" with adjustable energy potentials. Instead of traditional digital bits, this system would generate and sample from basic energy-based models directly in hardware. The authors outline how popular machine learning models can be built and trained using these hardware-native energy-based models within a probabilistic graphical model framework. They provide theoretical analysis and numerical studies on the runtime and energy consumption, suggesting significant efficiency gains. As a proof-of-concept, they present preliminary experimental work on stochastic analog superconducting circuits that operate using thermal noise. This work offers a potential long-term path toward extremely energy-efficient hardware for probabilistic machine learning, addressing a critical bottleneck in AI development.",
+      "what_is_new": "This paper introduces a comprehensive blueprint for an equilibrium-based differentiable continuous-variable thermodynamic computing stack. It details how to construct and train popular machine learning models using hardware-native energy-based models. Furthermore, it presents preliminary experimental realization using stochastic analog superconducting circuits driven by thermal noise."
+    },
+    {
+      "arxiv_id": "2607.16181",
+      "title": "Vision-Language Assistant for Emotional Reactions to Risky Driving",
+      "url": "https://arxiv.org/abs/2607.16181v1",
+      "score": 0,
+      "subdomain": "Human-Computer Interaction",
+      "authors": "Harine Choi, Eun Hak Lee, Zhengzhong Tu",
+      "published": "2026-07-17",
+      "lay_summary": "This study introduces Keep Yelling Assistant (KYA), a novel vision-language system designed to detect risky driving behaviors and provide emotionally expressive verbal feedback to drivers. Unlike existing autonomous driving systems that focus purely on perception and reasoning, KYA prioritizes the emotional dimension and user experience. It operates in two main stages: a vision module uses YOLOv8 to identify high-risk maneuvers like sudden cut-ins from dashcam video, extracting key metrics such as relative distance and speed. This structured data is then fed into a language module, which leverages state-of-the-art large language models (e.g., ChatGPT-4o, Claude 3) to generate verbal responses. Crucially, these responses are tailored to user-defined emotional tones, such as neutral, humorous, or analytical. Evaluated with dashcam videos and a user study involving 108 participants, the system demonstrated favorable ratings for emotional alignment, with the YOLOv8s and ChatGPT-4o combination performing best. KYA represents a significant step towards more emotionally intelligent in-vehicle AI, aiming to improve driver awareness, comfort, and overall well-being.",
+      "what_is_new": "This paper introduces a novel vision-language pipeline that integrates real-time risky driving detection with emotionally adaptive, LLM-generated verbal responses. It uniquely allows drivers to customize the emotional tone of feedback, addressing a gap in existing systems that rarely consider the emotional dimension of in-vehicle user experience."
+    },
+    {
+      "arxiv_id": "2607.16178",
+      "title": "Cluster-Aware Matching via Laplacian Optimal Transport",
+      "url": "https://arxiv.org/abs/2607.16178v1",
+      "score": 0,
+      "subdomain": "Scientific Applications",
+      "authors": "Gabriel Samberg, YoonHaeng Hur, Yuehaw Khoo et al.",
+      "published": "2026-07-17",
+      "lay_summary": "This paper introduces a new method for matching \"point clouds\" – collections of data points – that possess an underlying cluster structure. Often, in real-world data, individual points within a group are interchangeable, making a precise point-to-point match less useful than aligning entire regions or clusters. The authors propose Laplacian Optimal Transport (LapOT), which enhances the standard optimal transport framework by adding a regularization term derived from similarity graphs of the point clouds. This encourages the matching process to respect the natural groupings within the data, leading to more meaningful and stable alignments between datasets. They also present Refined Simultaneous Clustering (RSC), a technique that uses the cluster-aware matches from LapOT to create consistent data partitions across different point sets, overcoming limitations of independent clustering.",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2607.16177",
+      "title": "Physics-enhanced reinforcement learning for real-time optimal control of dynamical systems",
+      "url": "https://arxiv.org/abs/2607.16177v1",
+      "score": 0,
+      "subdomain": "Reinforcement Learning & Planning",
+      "authors": "Matteo Tomasetto, Nicolò Botteghi, Gabriele Bruni et al.",
+      "published": "2026-07-17",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2607.16175",
+      "title": "Evaluating Open-Weight LLMs for Generating Structured Threat Information for Autonomous Vehicle Vulnerabilities",
+      "url": "https://arxiv.org/abs/2607.16175v1",
+      "score": 0,
+      "subdomain": "Scientific Applications",
+      "authors": "Md Erfan, Ahmed Ryan, Md Kamal Hossain Chowdhury et al.",
+      "published": "2026-07-17",
+      "lay_summary": "",
+      "what_is_new": ""
+    },
+    {
+      "arxiv_id": "2607.16169",
+      "title": "When Does Muon Help Agentic Reinforcement Learning?",
+      "url": "https://arxiv.org/abs/2607.16169v1",
+      "score": 0,
+      "subdomain": "Agents & Reasoning",
+      "authors": "Kai Ruan, Jinghao Lin, Zihe Huang et al.",
+      "published": "2026-07-17",
+      "lay_summary": "This paper investigates whether Muon, an optimizer competitive with AdamW in large-scale pre-training, can improve agentic reinforcement learning (RL) performance. Focusing on sparse-reward scenarios, the researchers conducted single-seed comparisons using Muon against AdamW on the ALFWorld environment with a Qwen2.5-0.5B-Instruct model, employing Group-in-Group Policy Optimization (GiGPO). They found that applying Muon specifically to the hidden weight matrices of the agent significantly boosted validation success rates from 0.290 to 0.546 (+88%), while AdamW controls showed no post-update success. The effectiveness of Muon was also shown to depend on the advantage estimator and learning rate, with specific configurations yielding substantial improvements in success rate and faster convergence. These exploratory findings suggest Muon could be a valuable tool for training more effective sparse-reward agents, though further validation is needed.",
+      "what_is_new": "This paper uniquely explores Muon's application to agentic reinforcement learning post-training, demonstrating its specific benefit when applied only to hidden weight matrices in sparse-reward settings. It shows Muon can significantly outperform AdamW in this context."
+    },
+    {
+      "arxiv_id": "2607.16168",
+      "title": "Behaviour-Conditioned Neural Processes for Adaptive Residential Short-Term Load Forecasting",
+      "url": "https://arxiv.org/abs/2607.16168v1",
+      "score": 0,
+      "subdomain": "Scientific Applications",
+      "authors": "Ramin Soleimani, Andrea Visentin, Dirk Pesch",
+      "published": "2026-07-17",
+      "lay_summary": "This paper tackles the complex problem of forecasting short-term electricity demand for individual households, a task made difficult by diverse and unpredictable user behaviours. The authors propose a novel approach using a \"behaviour-conditioned Attentive Neural Process\" (ANP) framework. Instead of just grouping households by behaviour externally, their model directly embeds inferred behavioural patterns into its forecasting mechanism. It uses a discrete latent variable to represent these behaviours, learned from available context data, and a continuous latent variable to capture general uncertainty. Crucially, it doesn't require pre-labeled behavioural data; instead, it uses information from clustering as \"weak supervision\" during training, then infers behaviours at test time.\n\nEvaluated on a real-world smart grid dataset, the proposed method significantly outperforms a standard ANP baseline and traditional deterministic forecasting models. It shows average reductions of 7.9% in Mean Absolute Error (MAE) and 6.9% in Continuous Ranked Probability Score (CRPS) over the ANP, especially when historical context data is limited. This means more accurate and reliable predictions for individual homes, which is vital for efficient energy management, smart grid operations, and personalized energy services.",
+      "what_is_new": "This work introduces a behaviour-conditioned Attentive Neural Process that directly embeds inferred behavioural structure into its forecasting"
+    }
+  ],
+  "sample": false
+}
